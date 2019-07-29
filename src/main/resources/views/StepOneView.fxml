@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.text.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="views.StepOneView">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="views.StepOneView">
    <children>
       <DatePicker fx:id="DatePicker" layoutX="182.0" layoutY="126.0" prefHeight="25.0" prefWidth="202.0" />
       <Separator layoutX="179.0" layoutY="185.0" orientation="VERTICAL" prefHeight="126.0" prefWidth="0.0" />
@@ -41,12 +45,12 @@
       <CheckBox fx:id="SickWedCheckBox" layoutX="205.0" layoutY="267.0" mnemonicParsing="false" text="Wed" />
       <CheckBox fx:id="SickThuCheckBox" layoutX="300.0" layoutY="212.0" mnemonicParsing="false" text="Thu" />
       <CheckBox fx:id="SickFriCheckBox" layoutX="300.0" layoutY="239.0" mnemonicParsing="false" text="Fri" />
-      <CheckBox fx:id="SickWeekCheckBox" layoutX="300.0" layoutY="267.0" mnemonicParsing="false" text="Week" />
       <CheckBox fx:id="VacMoCheckBox" layoutX="401.0" layoutY="212.0" mnemonicParsing="false" text="Mo" />
       <CheckBox fx:id="VacTueCheckBox" layoutX="401.0" layoutY="239.0" mnemonicParsing="false" text="Tue" />
       <CheckBox fx:id="VacWedCheckBox" layoutX="401.0" layoutY="267.0" mnemonicParsing="false" text="Wed" />
       <CheckBox fx:id="VacThuCheckBox" layoutX="498.0" layoutY="212.0" mnemonicParsing="false" text="Thu" />
       <CheckBox fx:id="VacFriCheckBox" layoutX="498.0" layoutY="239.0" mnemonicParsing="false" text="Fri" />
-      <CheckBox fx:id="VacWeekCheckBox" layoutX="498.0" layoutY="267.0" mnemonicParsing="false" text="Week" />
+      <RadioButton layoutX="205.0" layoutY="303.0" mnemonicParsing="false" text="Week" />
+      <RadioButton layoutX="399.0" layoutY="303.0" mnemonicParsing="false" text="Week" />
    </children>
 </AnchorPane>
