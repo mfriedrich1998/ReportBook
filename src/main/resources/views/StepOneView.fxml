@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="views.StepOneView">
+   <children>
+      <DatePicker fx:id="DatePicker" layoutX="182.0" layoutY="126.0" prefHeight="25.0" prefWidth="202.0" />
+      <Separator layoutX="179.0" layoutY="185.0" orientation="VERTICAL" prefHeight="126.0" prefWidth="0.0" />
+      <Separator layoutX="377.0" layoutY="185.0" orientation="VERTICAL" prefHeight="126.0" prefWidth="6.0" />
+      <Label fx:id="ReportBookNoLabel" layoutX="178.0" layoutY="90.0" prefHeight="17.0" prefWidth="152.0" text="Report Book Number : ">
+         <font>
+            <Font name="Arial" size="13.0" />
+         </font>
+      </Label>
+      <TextField fx:id="BookNumberTextField" layoutX="330.0" layoutY="86.0" prefHeight="25.0" prefWidth="57.0" />
+      <Label fx:id="SchoolDaysLabel" layoutX="34.0" layoutY="184.0" text="School days : ">
+         <font>
+            <Font name="Arial" size="13.0" />
+         </font>
+      </Label>
+      <Label fx:id="SickDaysLabel" layoutX="220.0" layoutY="184.0" text="Sick days : ">
+         <font>
+            <Font name="Arial" size="13.0" />
+         </font>
+      </Label>
+      <Label fx:id="VacationDaysLabel" layoutX="415.0" layoutY="184.0" prefHeight="17.0" prefWidth="111.0" text="Vacation days : ">
+         <font>
+            <Font name="Arial" size="13.0" />
+         </font>
+      </Label>
+      <CheckBox fx:id="SchoolMoCheckBox" layoutX="14.0" layoutY="212.0" mnemonicParsing="false" text="Mo" />
+      <CheckBox fx:id="SchoolTueCheckBox" layoutX="14.0" layoutY="239.0" mnemonicParsing="false" text="Tue" />
+      <CheckBox fx:id="SchoolWedCheckBox" layoutX="14.0" layoutY="267.0" mnemonicParsing="false" text="Wed" />
+      <CheckBox fx:id="SchoolThuCheckBox" layoutX="107.0" layoutY="212.0" mnemonicParsing="false" text="Thu" />
+      <CheckBox fx:id="SchoolFriCheckBox" layoutX="107.0" layoutY="239.0" mnemonicParsing="false" text="Fri" />
+      <CheckBox fx:id="SickMoCheckBox" layoutX="205.0" layoutY="212.0" mnemonicParsing="false" text="Mo" />
+      <CheckBox fx:id="SickTueCheckBox" layoutX="205.0" layoutY="239.0" mnemonicParsing="false" text="Tue" />
+      <CheckBox fx:id="SickWedCheckBox" layoutX="205.0" layoutY="267.0" mnemonicParsing="false" text="Wed" />
+      <CheckBox fx:id="SickThuCheckBox" layoutX="300.0" layoutY="212.0" mnemonicParsing="false" text="Thu" />
+      <CheckBox fx:id="SickFriCheckBox" layoutX="300.0" layoutY="239.0" mnemonicParsing="false" text="Fri" />
+      <CheckBox fx:id="SickWeekCheckBox" layoutX="300.0" layoutY="267.0" mnemonicParsing="false" text="Week" />
+      <CheckBox fx:id="VacMoCheckBox" layoutX="401.0" layoutY="212.0" mnemonicParsing="false" text="Mo" />
+      <CheckBox fx:id="VacTueCheckBox" layoutX="401.0" layoutY="239.0" mnemonicParsing="false" text="Tue" />
+      <CheckBox fx:id="VacWedCheckBox" layoutX="401.0" layoutY="267.0" mnemonicParsing="false" text="Wed" />
+      <CheckBox fx:id="VacThuCheckBox" layoutX="498.0" layoutY="212.0" mnemonicParsing="false" text="Thu" />
+      <CheckBox fx:id="VacFriCheckBox" layoutX="498.0" layoutY="239.0" mnemonicParsing="false" text="Fri" />
+      <CheckBox fx:id="VacWeekCheckBox" layoutX="498.0" layoutY="267.0" mnemonicParsing="false" text="Week" />
+   </children>
+</AnchorPane>
