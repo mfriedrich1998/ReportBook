@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="views.StepOneView">
+<AnchorPane fx:id="pane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.WizardController">
    <children>
       <DatePicker fx:id="DatePicker" layoutX="182.0" layoutY="126.0" prefHeight="25.0" prefWidth="202.0" />
       <Separator layoutX="179.0" layoutY="185.0" orientation="VERTICAL" prefHeight="126.0" prefWidth="0.0" />
@@ -50,7 +50,7 @@
       <CheckBox fx:id="VacWedCheckBox" layoutX="401.0" layoutY="267.0" mnemonicParsing="false" text="Wed" />
       <CheckBox fx:id="VacThuCheckBox" layoutX="498.0" layoutY="212.0" mnemonicParsing="false" text="Thu" />
       <CheckBox fx:id="VacFriCheckBox" layoutX="498.0" layoutY="239.0" mnemonicParsing="false" text="Fri" />
-      <RadioButton layoutX="205.0" layoutY="303.0" mnemonicParsing="false" text="Week" />
-      <RadioButton layoutX="399.0" layoutY="303.0" mnemonicParsing="false" text="Week" />
+      <RadioButton fx:id="sickDaysWeek" layoutX="205.0" layoutY="303.0" mnemonicParsing="false" text="Week" />
+      <RadioButton fx:id="vacDaysWeek" layoutX="399.0" layoutY="303.0" mnemonicParsing="false" text="Week" />
    </children>
 </AnchorPane>

@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.*?>
 
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="TODO">
+<AnchorPane fx:id="pane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="TODO">
    <children>
       <Label fx:id="ProfessionalActivitiesLabel" layoutX="65.0" layoutY="77.0" prefHeight="17.0" prefWidth="187.0" text="Add Professional Activities :">
          <font>
