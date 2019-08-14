@@ -5,8 +5,17 @@
 <?import javafx.scene.layout.*?>
 
 
-<AnchorPane fx:id="pane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="TODO">
+<?import javafx.scene.shape.Circle?>
+<AnchorPane fx:id="pane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ActivitiesController">
    <children>
+      <Circle fx:id="step1Circle" fill="#1f93ff00" layoutX="252.0" layoutY="23.0" radius="9.0" stroke="#00000091" strokeType="INSIDE" />
+      <Circle fx:id="step2Circle" fill="#ff6e1abd" layoutX="276.0" layoutY="23.0" radius="9.0" stroke="#00000091" strokeType="INSIDE" />
+      <Circle fx:id="step3Circle" fill="#1f93ff00" layoutX="300.0" layoutY="23.0" radius="9.0" stroke="#00000091" strokeType="INSIDE" />
+      <Circle fx:id="step4Circle" fill="#1f93ff00" layoutX="323.0" layoutY="23.0" radius="9.0" stroke="#00000091" strokeType="INSIDE" />
+      <Circle fx:id="step5Circle" fill="#1f93ff00" layoutX="347.0" layoutY="23.0" radius="9.0" stroke="#00000091" strokeType="INSIDE" />
+      <Button fx:id="activitiesBackButton" layoutX="404.0" layoutY="361.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="88.0" text="Back" onAction="#handleActivitesBackButtonAction"/>
+      <Button fx:id="activitiesNextButton" layoutX="492.0" layoutY="361.0" mnemonicParsing="false"  prefHeight="25.0" prefWidth="88.0" text="Next" onAction="#handleActivitiesNextButtonAction"/>
+      <Separator layoutX="15.0" layoutY="347.0" prefHeight="0.0" prefWidth="570.0" />
       <Label fx:id="ProfessionalActivitiesLabel" layoutX="65.0" layoutY="77.0" prefHeight="17.0" prefWidth="187.0" text="Add Professional Activities :">
          <font>
             <Font name="Arial" size="15.0" />

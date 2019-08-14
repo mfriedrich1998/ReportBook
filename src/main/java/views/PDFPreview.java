@@ -20,13 +20,14 @@ public class PDFPreview {
 
         JFrame applicationFrame = new JFrame();
 
-        applicationFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        applicationFrame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
         applicationFrame.add(viewerComponentPanel);
 
         controller.openDocument(filePath);
 
         applicationFrame.pack();
         applicationFrame.setVisible(true);
+
     }
 
 
