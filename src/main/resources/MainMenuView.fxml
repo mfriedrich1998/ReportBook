@@ -23,7 +23,7 @@
                 <Font name="Arial" size="15.0"/>
             </font>
         </Button>
-        <ChoiceBox fx:id="languageChoiceBox" value="English" layoutX="14.0" layoutY="14.0" prefWidth="150.0">
+        <ChoiceBox fx:id="languageChoiceBox" value="English" layoutX="14.0" layoutY="14.0" prefWidth="150.0" onAction="#handleEnglishChoice">
             <items>
                 <FXCollections fx:factory="observableArrayList">
                     <String fx:value="English"/>

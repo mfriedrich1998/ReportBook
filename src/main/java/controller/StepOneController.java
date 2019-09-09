@@ -7,10 +7,7 @@ import javafx.collections.ObservableSet;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.RadioButton;
-import javafx.scene.control.ToggleGroup;
+import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import views.PDFPreview;
 
@@ -32,6 +29,10 @@ public class StepOneController {
 
     @FXML
     private RadioButton vacDaysWeek;
+
+    private ObservableSet<RadioButton> selected = FXCollections.observableSet();
+
+    private ObservableSet<RadioButton> unselected = FXCollections.observableSet();
 
     @FXML
     private CheckBox SchoolMoCheckBox;
@@ -55,6 +56,51 @@ public class StepOneController {
     private IntegerBinding numCheckBoxesSelected = Bindings.size(selectedCheckBoxes);
 
     private final int maxSelected = 2;
+
+    @FXML
+    private CheckBox VacMoCheckBox;
+
+    @FXML
+    private CheckBox VacTueCheckBox;
+
+    @FXML
+    private CheckBox VacWedCheckBox;
+
+    @FXML
+    private CheckBox VacThuCheckBox;
+
+    @FXML
+    private CheckBox VacFriCheckBox;
+
+    private ObservableSet<CheckBox> vacSelectedCheckBoxes = FXCollections.observableSet();
+
+    private ObservableSet<CheckBox> vacUnselectedCheckBoxes = FXCollections.observableSet();
+
+    private IntegerBinding vacNumCheckBoxesSelected = Bindings.size(vacSelectedCheckBoxes);
+
+    private final int vacMaxSelected = 4;
+
+    @FXML
+    private CheckBox SickMoCheckBox;
+
+    @FXML
+    private CheckBox SickTueCheckBox;
+
+    @FXML
+    private CheckBox SickWedCheckBox;
+
+    @FXML
+    private CheckBox SickThuCheckBox;
+
+    @FXML
+    private CheckBox SickFriCheckBox;
+
+    private ObservableSet<CheckBox> sickSelectedCheckBoxes = FXCollections.observableSet();
+
+    private ObservableSet<CheckBox> sickUnselectedCheckBoxes = FXCollections.observableSet();
+
+    private IntegerBinding sickNumCheckBoxesSelected = Bindings.size(sickSelectedCheckBoxes);
+
 
 
     @FXML
@@ -91,6 +137,8 @@ public class StepOneController {
 
     }
 
+
+
     @FXML
     public void handleRadioButtonAction() {
         ToggleGroup toggleGroup = new ToggleGroup();
@@ -99,15 +147,14 @@ public class StepOneController {
     }
 
 
-
-    private void configureCheckBox(CheckBox checkBox){
-        if(checkBox.isSelected()){
+    private void configureCheckBox(CheckBox checkBox) {
+        if (checkBox.isSelected()) {
             selectedCheckBoxes.add(checkBox);
-        }else {
+        } else {
             unselectedCheckBoxes.add(checkBox);
         }
         checkBox.selectedProperty().addListener(((observable, oldValue, newValue) -> {
-            if(newValue){
+            if (newValue) {
                 unselectedCheckBoxes.remove(checkBox);
                 selectedCheckBoxes.add(checkBox);
             } else {
@@ -117,8 +164,43 @@ public class StepOneController {
         }));
     }
 
+    private void configureVacCheckBox(CheckBox checkBox) {
+        if (checkBox.isSelected()) {
+            vacSelectedCheckBoxes.add(checkBox);
+        } else {
+            vacUnselectedCheckBoxes.add(checkBox);
+        }
+        checkBox.selectedProperty().addListener(((observable, oldValue, newValue) -> {
+            if (newValue) {
+                vacUnselectedCheckBoxes.remove(checkBox);
+                vacSelectedCheckBoxes.add(checkBox);
+            } else {
+                vacSelectedCheckBoxes.remove(checkBox);
+                vacUnselectedCheckBoxes.add(checkBox);
+            }
+
+        }));
+    }
+
+    private void configureSickCheckBox(CheckBox checkBox){
+        if(checkBox.isSelected()){
+            sickSelectedCheckBoxes.add(checkBox);
+        } else {
+            sickUnselectedCheckBoxes.add(checkBox);
+        }
+        checkBox.selectedProperty().addListener(((observable, oldValue, newValue) -> {
+            if(newValue) {
+                sickUnselectedCheckBoxes.remove(checkBox);
+                sickSelectedCheckBoxes.add(checkBox);
+            } else {
+                sickSelectedCheckBoxes.remove(checkBox);
+                sickUnselectedCheckBoxes.add(checkBox);
+            }
+        }));
+    }
+
     @FXML
-    public void handleCheckBoxAction(){
+    public void handleCheckBoxAction() {
         configureCheckBox(SchoolMoCheckBox);
         configureCheckBox(SchoolTueCheckBox);
         configureCheckBox(SchoolWedCheckBox);
@@ -126,15 +208,47 @@ public class StepOneController {
         configureCheckBox(SchoolFriCheckBox);
 
         numCheckBoxesSelected.addListener(((observable, oldValue, newValue) -> {
-            if(newValue.intValue() >= maxSelected){
+            if (newValue.intValue() >= maxSelected) {
                 unselectedCheckBoxes.forEach(checkBox -> checkBox.setDisable(true));
             } else {
                 unselectedCheckBoxes.forEach(checkBox -> checkBox.setDisable(false));
             }
         }));
+
     }
 
+    @FXML
+    public void handleVacCheckBoxAction() {
+        configureVacCheckBox(VacMoCheckBox);
+        configureVacCheckBox(VacTueCheckBox);
+        configureVacCheckBox(VacWedCheckBox);
+        configureVacCheckBox(VacThuCheckBox);
+        configureVacCheckBox(VacFriCheckBox);
 
+        vacNumCheckBoxesSelected.addListener(((observable, oldValue, newValue) -> {
+            if (newValue.intValue() >= vacMaxSelected) {
+                vacUnselectedCheckBoxes.forEach(checkBox -> checkBox.setDisable(true));
+            } else {
+                vacUnselectedCheckBoxes.forEach(checkBox -> checkBox.setDisable(false));
+            }
+        }));
+    }
 
+    @FXML
+    public void handleSickCheckBoxAction(){
+        configureSickCheckBox(SickMoCheckBox);
+        configureSickCheckBox(SickTueCheckBox);
+        configureSickCheckBox(SickWedCheckBox);
+        configureSickCheckBox(SickThuCheckBox);
+        configureSickCheckBox(SickFriCheckBox);
+
+        sickNumCheckBoxesSelected.addListener(((observable, oldValue, newValue) -> {
+            if(newValue.intValue() >= vacMaxSelected){
+                sickUnselectedCheckBoxes.forEach(checkBox -> checkBox.setDisable(true));
+            } else {
+                sickUnselectedCheckBoxes.forEach(checkBox -> checkBox.setDisable(false));
+            }
+        }));
+    }
 
 }

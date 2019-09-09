@@ -1,6 +1,5 @@
 package controller;
 
-import javafx.collections.ObservableSet;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -30,14 +29,14 @@ public class SchoolSubjectController {
     @FXML
     private ChoiceBox subjectChoiceBox;
 
-    public int choiceboxRow = 1;
+    public int choiceBoxRow = 1;
     public int choiceBoxColumn = 0;
     public int textFieldRow = 1;
-    public int textfieldColumn = 1;
-    public int SecChoiceBoxColumn = 3;
-    public int SecTextFieldColumn = 4;
-    public int SecChoiceboxRow = 1;
-    public int SecTextFieldRow = 1;
+    public int textFieldColumn = 1;
+    public int secChoiceBoxColumn = 3;
+    public int secTextFieldColumn = 4;
+    public int secChoiceBoxRow = 1;
+    public int secTextFieldRow = 1;
 
     @FXML
     private ChoiceBox secondSubjectChoiceBox;
@@ -69,10 +68,10 @@ public class SchoolSubjectController {
         ChoiceBox choiceBox = new ChoiceBox();
         choiceBox.setValue("ITS");
         choiceBox.setItems(subjectChoiceBox.getItems());
-        gridPane.add(textField, textfieldColumn, textFieldRow);
-        gridPane.add(choiceBox, choiceBoxColumn, choiceboxRow);
-        if (choiceboxRow < 6) {
-            choiceboxRow++;
+        gridPane.add(textField, textFieldColumn, textFieldRow);
+        gridPane.add(choiceBox, choiceBoxColumn, choiceBoxRow);
+        if (choiceBoxRow < 6) {
+            choiceBoxRow++;
         }
         if (textFieldRow < 6) {
             textFieldRow++;
@@ -88,13 +87,13 @@ public class SchoolSubjectController {
         ChoiceBox choiceBox = new ChoiceBox();
         choiceBox.setValue("ITS");
         choiceBox.setItems(secondSubjectChoiceBox.getItems());
-        gridPane.add(textField, SecTextFieldColumn, SecTextFieldRow);
-        gridPane.add(choiceBox, SecChoiceBoxColumn, SecChoiceboxRow);
-        if (SecChoiceboxRow < 6) {
-            SecChoiceboxRow++;
+        gridPane.add(textField, secTextFieldColumn, secTextFieldRow);
+        gridPane.add(choiceBox, secChoiceBoxColumn, secChoiceBoxRow);
+        if (secChoiceBoxRow < 6) {
+            secChoiceBoxRow++;
         }
-        if(SecTextFieldRow < 6){
-            SecTextFieldRow++;
+        if(secTextFieldRow < 6){
+            secTextFieldRow++;
         }
         else {
             SecondMoreButton.setDisable(true);
