@@ -11,7 +11,7 @@ public class MainView extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("MainMenuView.fxml"));
+        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("views/MainMenuView.fxml"));
         primaryStage.setTitle("Report Book Creator");
         primaryStage.setScene(new Scene(root, 600, 400));
         primaryStage.show();

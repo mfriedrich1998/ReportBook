@@ -112,7 +112,7 @@ public class StepOneController {
                 System.out.println(pdfPreview);
 
             } else {
-                pane.getChildren().setAll((AnchorPane) FXMLLoader.load(getClass().getClassLoader().getResource("ProfessionalActivitiesView.fxml")));
+                pane.getChildren().setAll((AnchorPane) FXMLLoader.load(getClass().getClassLoader().getResource("views/ProfessionalActivitiesView.fxml")));
 
             }
 
@@ -125,7 +125,7 @@ public class StepOneController {
     @FXML
     public void handleStepOneBackButtonAction(ActionEvent event) {
         try {
-            pane.getChildren().setAll((AnchorPane) FXMLLoader.load(getClass().getClassLoader().getResource("MainMenuView.fxml")));
+            pane.getChildren().setAll((AnchorPane) FXMLLoader.load(getClass().getClassLoader().getResource("views/MainMenuView.fxml")));
         } catch (IOException e) {
             e.printStackTrace();
         }

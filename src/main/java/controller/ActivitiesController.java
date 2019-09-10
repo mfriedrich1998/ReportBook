@@ -23,7 +23,7 @@ public class ActivitiesController  {
     @FXML
     public void handleActivitiesNextButtonAction(ActionEvent event){
         try {
-            pane.getChildren().setAll((AnchorPane) FXMLLoader.load(getClass().getClassLoader().getResource("InstructionsView.fxml")));
+            pane.getChildren().setAll((AnchorPane) FXMLLoader.load(getClass().getClassLoader().getResource("views/InstructionsView.fxml")));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -32,7 +32,7 @@ public class ActivitiesController  {
     @FXML
     public void handleActivitiesBackButtonAction(ActionEvent event) {
         try {
-            pane.getChildren().setAll((AnchorPane) FXMLLoader.load(getClass().getClassLoader().getResource("StepOneView.fxml")));
+            pane.getChildren().setAll((AnchorPane) FXMLLoader.load(getClass().getClassLoader().getResource("views/StepOneView.fxml")));
         } catch (IOException e) {
             e.printStackTrace();
 

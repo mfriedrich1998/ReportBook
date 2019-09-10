@@ -18,7 +18,7 @@ public class InstructionsController {
     public void handleInstructionsNextButtonAction(ActionEvent event){
         try {
 
-            pane.getChildren().setAll((AnchorPane) FXMLLoader.load(getClass().getClassLoader().getResource("SchoolSubjectsTwoView.fxml")));
+            pane.getChildren().setAll((AnchorPane) FXMLLoader.load(getClass().getClassLoader().getResource("views/SchoolSubjectsTwoView.fxml")));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -30,7 +30,7 @@ public class InstructionsController {
     @FXML
     public void handleInstructionsBackButtonAction(ActionEvent event){
         try {
-            pane.getChildren().setAll((AnchorPane) FXMLLoader.load(getClass().getClassLoader().getResource("ProfessionalActivitiesView.fxml")));
+            pane.getChildren().setAll((AnchorPane) FXMLLoader.load(getClass().getClassLoader().getResource("views/ProfessionalActivitiesView.fxml")));
         } catch (IOException e) {
             e.printStackTrace();
         }

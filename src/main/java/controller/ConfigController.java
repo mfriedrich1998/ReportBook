@@ -43,7 +43,7 @@ public class ConfigController {
         try {
             Optional<ButtonType> result = alert.showAndWait();
             if (result.get() == ButtonType.OK) {
-                pane.getChildren().setAll((AnchorPane) FXMLLoader.load(getClass().getClassLoader().getResource("MainMenuView.fxml")));
+                pane.getChildren().setAll((AnchorPane) FXMLLoader.load(getClass().getClassLoader().getResource("views/MainMenuView.fxml")));
             }
             else if (result.get() == ButtonType.CANCEL) {
                 alert.close();
@@ -84,7 +84,7 @@ public class ConfigController {
         alert.showAndWait();
 
         try {
-            pane.getChildren().setAll((AnchorPane) FXMLLoader.load(getClass().getClassLoader().getResource("MainMenuView.fxml")));
+            pane.getChildren().setAll((AnchorPane) FXMLLoader.load(getClass().getClassLoader().getResource("views/MainMenuView.fxml")));
         } catch (IOException e) {
             e.printStackTrace();
         }

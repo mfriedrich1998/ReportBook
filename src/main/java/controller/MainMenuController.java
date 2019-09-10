@@ -2,33 +2,21 @@ package controller;
 
 
 import backend.CSVConfig.CSV;
-import javafx.collections.FXCollections;
+import backend.I18N.I18N;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
 import javafx.scene.layout.AnchorPane;
 
 
 import java.io.IOException;
-import java.net.URL;
 import java.util.Locale;
-import java.util.ResourceBundle;
 
-public class MainMenuController implements Initializable {
+public class MainMenuController {
 
     @FXML
     private AnchorPane pane;
-
-    @FXML
-    private ChoiceBox languageChoiceBox;
-
-    private Locale locale;
-
-    private ResourceBundle bundle;
 
     @FXML
     private Button configButton;
@@ -37,10 +25,11 @@ public class MainMenuController implements Initializable {
     private Button createReportButton;
 
 
+
     @FXML
     public void handleCreateReportButtonAction(ActionEvent event) {
         try {
-            pane.getChildren().setAll((AnchorPane) FXMLLoader.load(getClass().getClassLoader().getResource("StepOneView.fxml")));
+            pane.getChildren().setAll((AnchorPane) FXMLLoader.load(getClass().getClassLoader().getResource("views/StepOneView.fxml")));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -50,7 +39,7 @@ public class MainMenuController implements Initializable {
     public void handleConfigButtonAction(ActionEvent event) {
         try {
             load("config");
-            pane.getChildren().setAll((AnchorPane) FXMLLoader.load(getClass().getClassLoader().getResource("ConfigurationView.fxml")));
+            pane.getChildren().setAll((AnchorPane) FXMLLoader.load(getClass().getClassLoader().getResource("views/ConfigurationView.fxml")));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -67,31 +56,25 @@ public class MainMenuController implements Initializable {
         return string;
     }
 
+
     @FXML
-    public void handleEnglishChoice(ActionEvent event) {
-        if(languageChoiceBox.getValue().equals("German")) {
-
-
-            languageChoiceBox.setOnAction(new EventHandler<ActionEvent>() {
-                @Override
-                public void handle(ActionEvent event) {
-                    loadLang("de");
-                }
-            });
-        }
+    public void handleGermanButtonAction(){
+        switchLanguage(Locale.GERMAN);
+        createReportButton.textProperty().bind(I18N.createStringBinding("key2"));
+        configButton.textProperty().bind(I18N.createStringBinding("key1"));
 
     }
 
-    private void loadLang(String lang) {
-        locale = new Locale(lang);
-        bundle = ResourceBundle.getBundle("lang/lang", locale);
-        configButton.setText(bundle.getString("key1"));
-        createReportButton.setText(bundle.getString("key2"));
+    @FXML
+    public void handleEnglishButtonAction(){
+       switchLanguage(Locale.ENGLISH);
+        createReportButton.textProperty().bind(I18N.createStringBinding("key2"));
+        configButton.textProperty().bind(I18N.createStringBinding("key1"));
 
     }
 
-    public void initialize(URL location, ResourceBundle resources) {
-
+    private void switchLanguage(Locale locale){
+        I18N.setLocale(locale);
     }
 
 
