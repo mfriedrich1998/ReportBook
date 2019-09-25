@@ -5,68 +5,97 @@
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane fx:id="pane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.StepOneController">
-   <children>
-      <Circle fx:id="step1Circle" fill="#ff6e1abd" layoutX="252.0" layoutY="23.0" radius="9.0" stroke="#00000091" strokeType="INSIDE" />
-      <Circle fx:id="step2Circle" fill="#1f93ff00" layoutX="276.0" layoutY="23.0" radius="9.0" stroke="#00000091" strokeType="INSIDE" />
-      <Circle fx:id="step3Circle" fill="#1f93ff00" layoutX="300.0" layoutY="23.0" radius="9.0" stroke="#00000091" strokeType="INSIDE" />
-      <Circle fx:id="step4Circle" fill="#1f93ff00" layoutX="323.0" layoutY="23.0" radius="9.0" stroke="#00000091" strokeType="INSIDE" />
-      <Circle fx:id="step5Circle" fill="#1f93ff00" layoutX="347.0" layoutY="23.0" radius="9.0" stroke="#00000091" strokeType="INSIDE" />
-      <Button fx:id="stepOneBackButton" layoutX="404.0" layoutY="361.0" mnemonicParsing="false" onAction="#handleStepOneBackButtonAction" prefHeight="25.0" prefWidth="88.0" text="Back" />
-      <Button fx:id="stepOneNextButton" layoutX="492.0" layoutY="361.0" mnemonicParsing="false" onAction="#handleStepOneNextButtonAction" prefHeight="25.0" prefWidth="88.0" text="Next" />
-      <Separator layoutX="15.0" layoutY="347.0" prefHeight="0.0" prefWidth="570.0" />
-      <DatePicker fx:id="fromDate" layoutX="106.0" layoutY="143.0" onAction="#ChooseFromDateToDate" prefHeight="25.0" prefWidth="152.0" />
-      <DatePicker fx:id="toDate" layoutX="280.0" layoutY="143.0" onAction="#ChooseFromDateToDate" prefHeight="25.0" prefWidth="152.0" />
-      <Separator layoutX="179.0" layoutY="185.0" orientation="VERTICAL" prefHeight="126.0" prefWidth="0.0" />
-      <Separator layoutX="377.0" layoutY="185.0" orientation="VERTICAL" prefHeight="126.0" prefWidth="6.0" />
-      <Label fx:id="ReportBookNoLabel" layoutX="109.0" layoutY="83.0" prefHeight="17.0" prefWidth="152.0" text="Report Book Number : ">
-         <font>
-            <Font name="Arial" size="13.0" />
-         </font>
-      </Label>
-      <TextField fx:id="BookNumberTextField" layoutX="281.0" layoutY="79.0" prefHeight="25.0" prefWidth="57.0" />
-      <Label fx:id="SchoolDaysLabel" layoutX="34.0" layoutY="184.0" text="School days : ">
-         <font>
-            <Font name="Arial" size="13.0" />
-         </font>
-      </Label>
-      <Label fx:id="SickDaysLabel" layoutX="220.0" layoutY="184.0" text="Sick days : ">
-         <font>
-            <Font name="Arial" size="13.0" />
-         </font>
-      </Label>
-      <Label fx:id="VacationDaysLabel" layoutX="415.0" layoutY="184.0" prefHeight="17.0" prefWidth="111.0" text="Vacation days : ">
-         <font>
-            <Font name="Arial" size="13.0" />
-         </font>
-      </Label>
-      <CheckBox fx:id="SchoolMoCheckBox" layoutX="14.0" layoutY="212.0" mnemonicParsing="false" text="Mo"  onAction="#handleCheckBoxAction"/>
-      <CheckBox fx:id="SchoolTueCheckBox" layoutX="14.0" layoutY="239.0" mnemonicParsing="false" text="Tue"  onAction="#handleCheckBoxAction"/>
-      <CheckBox fx:id="SchoolWedCheckBox" layoutX="14.0" layoutY="267.0" mnemonicParsing="false" text="Wed" onAction="#handleCheckBoxAction"/>
-      <CheckBox fx:id="SchoolThuCheckBox" layoutX="107.0" layoutY="212.0" mnemonicParsing="false" text="Thu" onAction="#handleCheckBoxAction"/>
-      <CheckBox fx:id="SchoolFriCheckBox" layoutX="107.0" layoutY="239.0" mnemonicParsing="false" text="Fri" onAction="#handleCheckBoxAction"/>
-      <CheckBox fx:id="SickMoCheckBox" layoutX="205.0" layoutY="212.0" mnemonicParsing="false" text="Mo" onAction="#handleSickCheckBoxAction" />
-      <CheckBox fx:id="SickTueCheckBox" layoutX="205.0" layoutY="239.0" mnemonicParsing="false" text="Tue" onAction="#handleSickCheckBoxAction" />
-      <CheckBox fx:id="SickWedCheckBox" layoutX="205.0" layoutY="267.0" mnemonicParsing="false" text="Wed" onAction="#handleSickCheckBoxAction"/>
-      <CheckBox fx:id="SickThuCheckBox" layoutX="300.0" layoutY="212.0" mnemonicParsing="false" text="Thu" onAction="#handleSickCheckBoxAction"/>
-      <CheckBox fx:id="SickFriCheckBox" layoutX="300.0" layoutY="239.0" mnemonicParsing="false" text="Fri" onAction="#handleSickCheckBoxAction"/>
-      <CheckBox fx:id="VacMoCheckBox" layoutX="401.0" layoutY="212.0" mnemonicParsing="false" text="Mo"  onAction="#handleVacCheckBoxAction" />
-      <CheckBox fx:id="VacTueCheckBox" layoutX="401.0" layoutY="239.0" mnemonicParsing="false" text="Tue" onAction="#handleVacCheckBoxAction" />
-      <CheckBox fx:id="VacWedCheckBox" layoutX="401.0" layoutY="267.0" mnemonicParsing="false" text="Wed" onAction="#handleVacCheckBoxAction" />
-      <CheckBox fx:id="VacThuCheckBox" layoutX="498.0" layoutY="212.0" mnemonicParsing="false" text="Thu" onAction="#handleVacCheckBoxAction"  />
-      <CheckBox fx:id="VacFriCheckBox" layoutX="498.0" layoutY="239.0" mnemonicParsing="false" text="Fri" onAction="#handleVacCheckBoxAction" />
-      <RadioButton fx:id="sickDaysWeek" layoutX="205.0" layoutY="303.0" mnemonicParsing="false" text="Week" onAction="#handleRadioButtonAction" />
-      <RadioButton fx:id="vacDaysWeek" layoutX="399.0" layoutY="303.0" mnemonicParsing="false" text="Week" onAction="#handleRadioButtonAction" />
-      <Label fx:id="fromDateLabel" layoutX="107.0" layoutY="114.0" text="From Date: ">
-         <font>
-            <Font name="Arial" size="12.0" />
-         </font>
-      </Label>
-      <Label fx:id="toDateLabel" layoutX="284.0" layoutY="114.0" text="To Date: ">
-         <font>
-            <Font name="Arial" size="12.0" />
-         </font>
-      </Label>
+<AnchorPane fx:id="pane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.StepOneController">
+    <children>
+        <Circle fx:id="step1Circle" fill="#ff6e1abd" layoutX="252.0" layoutY="23.0" radius="9.0" stroke="#00000091"
+                strokeType="INSIDE"/>
+        <Circle fx:id="step2Circle" fill="#1f93ff00" layoutX="276.0" layoutY="23.0" radius="9.0" stroke="#00000091"
+                strokeType="INSIDE"/>
+        <Circle fx:id="step3Circle" fill="#1f93ff00" layoutX="300.0" layoutY="23.0" radius="9.0" stroke="#00000091"
+                strokeType="INSIDE"/>
+        <Circle fx:id="step4Circle" fill="#1f93ff00" layoutX="323.0" layoutY="23.0" radius="9.0" stroke="#00000091"
+                strokeType="INSIDE"/>
+        <Circle fx:id="step5Circle" fill="#1f93ff00" layoutX="347.0" layoutY="23.0" radius="9.0" stroke="#00000091"
+                strokeType="INSIDE"/>
+        <Button fx:id="stepOneBackButton" layoutX="404.0" layoutY="361.0" mnemonicParsing="false"
+                onAction="#handleStepOneBackButtonAction" prefHeight="25.0" prefWidth="88.0" text="Back"/>
+        <Button fx:id="stepOneNextButton" layoutX="492.0" layoutY="361.0" mnemonicParsing="false"
+                onAction="#handleStepOneNextButtonAction" prefHeight="25.0" prefWidth="88.0" text="Next"/>
+        <Separator layoutX="15.0" layoutY="347.0" prefHeight="0.0" prefWidth="570.0"/>
+        <DatePicker fx:id="fromDate" layoutX="106.0" layoutY="143.0" onAction="#ChooseFromDateToDate" prefHeight="25.0"
+                    prefWidth="152.0"/>
+        <DatePicker fx:id="toDate" layoutX="280.0" layoutY="143.0" onAction="#ChooseFromDateToDate" prefHeight="25.0"
+                    prefWidth="152.0"/>
+        <Separator layoutX="179.0" layoutY="185.0" orientation="VERTICAL" prefHeight="126.0" prefWidth="0.0"/>
+        <Separator layoutX="377.0" layoutY="185.0" orientation="VERTICAL" prefHeight="126.0" prefWidth="6.0"/>
+        <Label fx:id="ReportBookNoLabel" layoutX="109.0" layoutY="83.0" prefHeight="17.0" prefWidth="152.0"
+               text="Report Book Number : ">
+            <font>
+                <Font name="Arial" size="13.0"/>
+            </font>
+        </Label>
+        <TextField fx:id="bookNumberTextField" layoutX="281.0" layoutY="79.0" prefHeight="25.0" prefWidth="57.0"/>
+        <Label fx:id="SchoolDaysLabel" layoutX="34.0" layoutY="184.0" text="School days : ">
+            <font>
+                <Font name="Arial" size="13.0"/>
+            </font>
+        </Label>
+        <Label fx:id="SickDaysLabel" layoutX="220.0" layoutY="184.0" text="Sick days : ">
+            <font>
+                <Font name="Arial" size="13.0"/>
+            </font>
+        </Label>
+        <Label fx:id="VacationDaysLabel" layoutX="415.0" layoutY="184.0" prefHeight="17.0" prefWidth="111.0"
+               text="Vacation days : ">
+            <font>
+                <Font name="Arial" size="13.0"/>
+            </font>
+        </Label>
+        <CheckBox fx:id="SchoolMoCheckBox" layoutX="14.0" layoutY="212.0" mnemonicParsing="false" text="Mo"
+                  onAction="#handleCheckBoxAction"/>
+        <CheckBox fx:id="SchoolTueCheckBox" layoutX="14.0" layoutY="239.0" mnemonicParsing="false" text="Tue"
+                  onAction="#handleCheckBoxAction"/>
+        <CheckBox fx:id="SchoolWedCheckBox" layoutX="14.0" layoutY="267.0" mnemonicParsing="false" text="Wed"
+                  onAction="#handleCheckBoxAction"/>
+        <CheckBox fx:id="SchoolThuCheckBox" layoutX="107.0" layoutY="212.0" mnemonicParsing="false" text="Thu"
+                  onAction="#handleCheckBoxAction"/>
+        <CheckBox fx:id="SchoolFriCheckBox" layoutX="107.0" layoutY="239.0" mnemonicParsing="false" text="Fri"
+                  onAction="#handleCheckBoxAction"/>
+        <CheckBox fx:id="SickMoCheckBox" layoutX="205.0" layoutY="212.0" mnemonicParsing="false" text="Mo"
+                  onAction="#handleSickCheckBoxAction"/>
+        <CheckBox fx:id="SickTueCheckBox" layoutX="205.0" layoutY="239.0" mnemonicParsing="false" text="Tue"
+                  onAction="#handleSickCheckBoxAction"/>
+        <CheckBox fx:id="SickWedCheckBox" layoutX="205.0" layoutY="267.0" mnemonicParsing="false" text="Wed"
+                  onAction="#handleSickCheckBoxAction"/>
+        <CheckBox fx:id="SickThuCheckBox" layoutX="300.0" layoutY="212.0" mnemonicParsing="false" text="Thu"
+                  onAction="#handleSickCheckBoxAction"/>
+        <CheckBox fx:id="SickFriCheckBox" layoutX="300.0" layoutY="239.0" mnemonicParsing="false" text="Fri"
+                  onAction="#handleSickCheckBoxAction"/>
+        <CheckBox fx:id="VacMoCheckBox" layoutX="401.0" layoutY="212.0" mnemonicParsing="false" text="Mo"
+                  onAction="#handleVacCheckBoxAction"/>
+        <CheckBox fx:id="VacTueCheckBox" layoutX="401.0" layoutY="239.0" mnemonicParsing="false" text="Tue"
+                  onAction="#handleVacCheckBoxAction"/>
+        <CheckBox fx:id="VacWedCheckBox" layoutX="401.0" layoutY="267.0" mnemonicParsing="false" text="Wed"
+                  onAction="#handleVacCheckBoxAction"/>
+        <CheckBox fx:id="VacThuCheckBox" layoutX="498.0" layoutY="212.0" mnemonicParsing="false" text="Thu"
+                  onAction="#handleVacCheckBoxAction"/>
+        <CheckBox fx:id="VacFriCheckBox" layoutX="498.0" layoutY="239.0" mnemonicParsing="false" text="Fri"
+                  onAction="#handleVacCheckBoxAction"/>
+        <RadioButton fx:id="sickDaysWeek" layoutX="205.0" layoutY="303.0" mnemonicParsing="false" text="Week"
+                     onAction="#handleRadioButtonAction"/>
+        <RadioButton fx:id="vacDaysWeek" layoutX="399.0" layoutY="303.0" mnemonicParsing="false" text="Week"
+                     onAction="#handleRadioButtonAction"/>
+        <Label fx:id="fromDateLabel" layoutX="107.0" layoutY="114.0" text="From Date: ">
+            <font>
+                <Font name="Arial" size="12.0"/>
+            </font>
+        </Label>
+        <Label fx:id="toDateLabel" layoutX="284.0" layoutY="114.0" text="To Date: ">
+            <font>
+                <Font name="Arial" size="12.0"/>
+            </font>
+        </Label>
 
-   </children>
+    </children>
 </AnchorPane>

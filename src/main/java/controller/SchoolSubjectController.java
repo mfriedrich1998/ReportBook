@@ -1,5 +1,6 @@
 package controller;
 
+import backend.saveinstance.SaveInstance;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -16,6 +17,7 @@ import java.io.IOException;
 
 public class SchoolSubjectController {
 
+    private SaveInstance instance = SaveInstance.getInstance();
 
     @FXML
     private AnchorPane pane;
@@ -47,6 +49,7 @@ public class SchoolSubjectController {
 
     @FXML
     public void handleSchoolSubjectsNextButtonAction(ActionEvent event) {
+        System.out.println(instance.getInstructionsText());
         PDFPreview pdfPreview = new PDFPreview();
         System.out.println(pdfPreview);
 
@@ -78,8 +81,8 @@ public class SchoolSubjectController {
         } else {
             moreButton.setDisable(true);
         }
-
     }
+
 
     @FXML
     public void handleSecondMoreButtonAction(ActionEvent e) {
@@ -92,11 +95,11 @@ public class SchoolSubjectController {
         if (secChoiceBoxRow < 6) {
             secChoiceBoxRow++;
         }
-        if(secTextFieldRow < 6){
+        if (secTextFieldRow < 6) {
             secTextFieldRow++;
-        }
-        else {
+        } else {
             SecondMoreButton.setDisable(true);
         }
     }
 }
+

@@ -1,6 +1,7 @@
 package controller;
 
 import backend.CSVConfig.CSV;
+import backend.I18N.I18N;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -37,15 +38,15 @@ public class ConfigController {
         Window window = configCancelButton.getScene().getWindow();
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.initOwner(window);
-        alert.setHeaderText("Warning");
-        alert.setContentText("Sure you want to leave without saving any changes?");
+        alert.setHeaderText(I18N.get("key29"));
+        alert.contentTextProperty().bind(I18N.createStringBinding("key30"));
+
 
         try {
             Optional<ButtonType> result = alert.showAndWait();
             if (result.get() == ButtonType.OK) {
                 pane.getChildren().setAll((AnchorPane) FXMLLoader.load(getClass().getClassLoader().getResource("views/MainMenuView.fxml")));
-            }
-            else if (result.get() == ButtonType.CANCEL) {
+            } else if (result.get() == ButtonType.CANCEL) {
                 alert.close();
             }
         } catch (IOException e) {
@@ -60,8 +61,8 @@ public class ConfigController {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.initOwner(window);
 
-            alert.setHeaderText("Form Error!");
-            alert.setContentText("Please enter your name");
+            alert.setHeaderText(I18N.get("key25"));
+            alert.contentTextProperty().bind(I18N.createStringBinding("key27"));
             alert.showAndWait();
             return;
 
@@ -69,8 +70,8 @@ public class ConfigController {
         if (departmentTextField.getText().isEmpty()) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.initOwner(window);
-            alert.setHeaderText("Form Error!");
-            alert.setContentText("Please enter your department ");
+            alert.setHeaderText(I18N.get("key25"));
+            alert.contentTextProperty().bind(I18N.createStringBinding("key26"));
             alert.showAndWait();
             return;
         }
@@ -80,7 +81,7 @@ public class ConfigController {
 
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.initOwner(window);
-        alert.setHeaderText("Saving changes successful!");
+        alert.setHeaderText(I18N.get("key28"));
         alert.showAndWait();
 
         try {

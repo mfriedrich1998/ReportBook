@@ -1,5 +1,6 @@
 package controller;
 
+import backend.saveinstance.SaveInstance;
 import javafx.beans.binding.Bindings;
 import javafx.beans.binding.IntegerBinding;
 import javafx.collections.FXCollections;
@@ -14,6 +15,12 @@ import views.PDFPreview;
 import java.io.IOException;
 
 public class StepOneController {
+
+
+    private SaveInstance instance = SaveInstance.getInstance();
+
+    @FXML
+    private TextField bookNumberTextField;
 
     @FXML
     private AnchorPane pane;
@@ -102,16 +109,18 @@ public class StepOneController {
     private IntegerBinding sickNumCheckBoxesSelected = Bindings.size(sickSelectedCheckBoxes);
 
 
-
     @FXML
     public void handleStepOneNextButtonAction(ActionEvent event) {
 
+
         try {
             if (sickDaysWeek.isSelected() || vacDaysWeek.isSelected()) {
+                collectViewData();
                 PDFPreview pdfPreview = new PDFPreview();
                 System.out.println(pdfPreview);
 
             } else {
+                collectViewData();
                 pane.getChildren().setAll((AnchorPane) FXMLLoader.load(getClass().getClassLoader().getResource("views/ProfessionalActivitiesView.fxml")));
 
             }
@@ -136,7 +145,6 @@ public class StepOneController {
         toDate.setValue(fromDate.getValue().plusDays(4));
 
     }
-
 
 
     @FXML
@@ -182,14 +190,14 @@ public class StepOneController {
         }));
     }
 
-    private void configureSickCheckBox(CheckBox checkBox){
-        if(checkBox.isSelected()){
+    private void configureSickCheckBox(CheckBox checkBox) {
+        if (checkBox.isSelected()) {
             sickSelectedCheckBoxes.add(checkBox);
         } else {
             sickUnselectedCheckBoxes.add(checkBox);
         }
         checkBox.selectedProperty().addListener(((observable, oldValue, newValue) -> {
-            if(newValue) {
+            if (newValue) {
                 sickUnselectedCheckBoxes.remove(checkBox);
                 sickSelectedCheckBoxes.add(checkBox);
             } else {
@@ -198,6 +206,7 @@ public class StepOneController {
             }
         }));
     }
+
 
     @FXML
     public void handleCheckBoxAction() {
@@ -235,7 +244,7 @@ public class StepOneController {
     }
 
     @FXML
-    public void handleSickCheckBoxAction(){
+    public void handleSickCheckBoxAction() {
         configureSickCheckBox(SickMoCheckBox);
         configureSickCheckBox(SickTueCheckBox);
         configureSickCheckBox(SickWedCheckBox);
@@ -243,12 +252,24 @@ public class StepOneController {
         configureSickCheckBox(SickFriCheckBox);
 
         sickNumCheckBoxesSelected.addListener(((observable, oldValue, newValue) -> {
-            if(newValue.intValue() >= vacMaxSelected){
+            if (newValue.intValue() >= vacMaxSelected) {
                 sickUnselectedCheckBoxes.forEach(checkBox -> checkBox.setDisable(true));
             } else {
                 sickUnselectedCheckBoxes.forEach(checkBox -> checkBox.setDisable(false));
             }
         }));
+    }
+
+
+    private void collectViewData() {
+        int bookNumber = Integer.parseInt(bookNumberTextField.getText());
+        String date = fromDate.toString();
+
+
+        instance.setReportBookNumber(bookNumber);
+        instance.setFromDate(date);
+        System.out.println("Book number is: " + instance.getReportBookNumber());
+        System.out.println(instance.getFromDate());
     }
 
 }

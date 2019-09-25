@@ -44,7 +44,6 @@ public class CSV {
         String loadedString = "";
 
 
-
         try {
             fileReader = new FileReader(fileName + ".csv");
             bufferedReader = new BufferedReader(fileReader);

@@ -25,7 +25,6 @@ public class MainMenuController {
     private Button createReportButton;
 
 
-
     @FXML
     public void handleCreateReportButtonAction(ActionEvent event) {
         try {
@@ -43,7 +42,6 @@ public class MainMenuController {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
     }
 
     public String load(String fileName) {
@@ -58,7 +56,7 @@ public class MainMenuController {
 
 
     @FXML
-    public void handleGermanButtonAction(){
+    public void handleGermanButtonAction() {
         switchLanguage(Locale.GERMAN);
         createReportButton.textProperty().bind(I18N.createStringBinding("key2"));
         configButton.textProperty().bind(I18N.createStringBinding("key1"));
@@ -66,14 +64,13 @@ public class MainMenuController {
     }
 
     @FXML
-    public void handleEnglishButtonAction(){
-       switchLanguage(Locale.ENGLISH);
+    public void handleEnglishButtonAction() {
+        switchLanguage(Locale.ENGLISH);
         createReportButton.textProperty().bind(I18N.createStringBinding("key2"));
         configButton.textProperty().bind(I18N.createStringBinding("key1"));
-
     }
 
-    private void switchLanguage(Locale locale){
+    private void switchLanguage(Locale locale) {
         I18N.setLocale(locale);
     }
 
