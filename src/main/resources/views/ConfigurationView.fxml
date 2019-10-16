@@ -1,9 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.text.*?>
+<?import java.lang.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane fx:id="pane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ConfigController">
    <children>
@@ -18,14 +27,14 @@
           <RowConstraints maxHeight="58.0" minHeight="0.0" prefHeight="49.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Label fx:id="nameLabel" prefHeight="47.0" prefWidth="140.0" text="Name : ">
+            <Label fx:id="nameLabel" prefHeight="47.0" prefWidth="140.0" text="%key3">
                <font>
                   <Font name="Arial" size="15.0" />
                </font>
             </Label>
             <TextField fx:id="nameTextField" prefHeight="35.0" prefWidth="280.0" GridPane.columnIndex="1" />
             <TextField fx:id="departmentTextField" prefHeight="35.0" prefWidth="280.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <Label fx:id="departmentLabel" prefHeight="39.0" prefWidth="139.0" text="Department : " GridPane.rowIndex="1">
+            <Label fx:id="departmentLabel" prefHeight="39.0" prefWidth="139.0" text="%key4" GridPane.rowIndex="1">
                <font>
                   <Font size="15.0" />
                </font>
@@ -34,11 +43,11 @@
       </GridPane>
       <ToolBar fx:id="toolBar" layoutY="340.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="63.0" prefWidth="602.0">
         <items>
-          <Button fx:id="configSaveButton" mnemonicParsing="false" prefHeight="25.0" prefWidth="97.0" text="Save" onAction="#handleConfigSaveButtonAction" />
-            <Button fx:id="configCancelButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="25.0" prefWidth="99.0" text="Cancel" onAction="#handleConfigCancelButtonAction" />
+          <Button fx:id="configSaveButton" mnemonicParsing="false" onAction="#handleConfigSaveButtonAction" prefHeight="25.0" prefWidth="97.0" text="%key6" />
+            <Button fx:id="configCancelButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#handleConfigCancelButtonAction" prefHeight="25.0" prefWidth="99.0" text="%key5" />
         </items>
       </ToolBar>
-      <Label fx:id="headerLabel" layoutX="59.0" layoutY="43.0" prefHeight="43.0" prefWidth="164.0" text="Configurations">
+      <Label fx:id="headerLabel" layoutX="59.0" layoutY="43.0" prefHeight="43.0" prefWidth="164.0" text="%key1">
          <font>
             <Font name="System Bold" size="19.0" />
          </font>

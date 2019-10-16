@@ -1,5 +1,6 @@
 package controller;
 
+import backend.PDF.PDFReader;
 import backend.saveinstance.SaveInstance;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -14,6 +15,7 @@ import javafx.scene.layout.GridPane;
 import views.PDFPreview;
 
 import java.io.IOException;
+import java.util.ResourceBundle;
 
 public class SchoolSubjectController {
 
@@ -46,9 +48,16 @@ public class SchoolSubjectController {
     @FXML
     private Button SecondMoreButton;
 
+    @FXML
+    private TextField subjectTextField;
+
+    @FXML
+    private TextField secondSubjectTextField;
+
 
     @FXML
     public void handleSchoolSubjectsNextButtonAction(ActionEvent event) {
+        collectViewData();
         System.out.println(instance.getInstructionsText());
         PDFPreview pdfPreview = new PDFPreview();
         System.out.println(pdfPreview);
@@ -57,8 +66,9 @@ public class SchoolSubjectController {
 
     @FXML
     public void handleSchoolSubjectsBackButtonAction(ActionEvent event) {
+        ResourceBundle bundle = ResourceBundle.getBundle("lang/lang");
         try {
-            pane.getChildren().setAll((AnchorPane) FXMLLoader.load(getClass().getClassLoader().getResource("views/InstructionsView.fxml")));
+            pane.getChildren().setAll((AnchorPane) FXMLLoader.load(getClass().getClassLoader().getResource("views/InstructionsView.fxml"), bundle));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -100,6 +110,24 @@ public class SchoolSubjectController {
         } else {
             SecondMoreButton.setDisable(true);
         }
+    }
+
+
+    private void collectViewData() {
+        String subject = subjectChoiceBox.getValue().toString();
+        String input = subjectTextField.getText();
+
+        String secondSubject = secondSubjectChoiceBox.getValue().toString();
+        String secondInput = secondSubjectTextField.getText();
+
+        instance.setSchoolSubject(subject);
+        instance.setSubjectInput(input);
+        instance.setSecondSchoolSubject(secondSubject);
+        instance.setSecondSubjectInput(secondInput);
+        System.out.println(instance.getSchoolSubject());
+        System.out.println(instance.getSubjectInput());
+        System.out.println(instance.getSecondSchoolSubject());
+        System.out.println(instance.getSecondSubjectInput());
     }
 }
 

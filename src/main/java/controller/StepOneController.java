@@ -1,5 +1,6 @@
 package controller;
 
+import backend.I18N.I18N;
 import backend.saveinstance.SaveInstance;
 import javafx.beans.binding.Bindings;
 import javafx.beans.binding.IntegerBinding;
@@ -13,6 +14,7 @@ import javafx.scene.layout.AnchorPane;
 import views.PDFPreview;
 
 import java.io.IOException;
+import java.util.ResourceBundle;
 
 public class StepOneController {
 
@@ -111,9 +113,23 @@ public class StepOneController {
 
     @FXML
     public void handleStepOneNextButtonAction(ActionEvent event) {
-
-
+        ResourceBundle bundle = ResourceBundle.getBundle("lang/lang");
         try {
+            if(bookNumberTextField.getText().isEmpty()) {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setHeaderText(I18N.get("key25"));
+                alert.contentTextProperty().bind(I18N.createStringBinding("key31"));
+                alert.showAndWait();
+                return;
+            }
+
+            if(fromDate.getValue() == null){
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setHeaderText(I18N.get("key25"));
+                alert.contentTextProperty().bind(I18N.createStringBinding("key32"));
+                alert.showAndWait();
+                return;
+            }
             if (sickDaysWeek.isSelected() || vacDaysWeek.isSelected()) {
                 collectViewData();
                 PDFPreview pdfPreview = new PDFPreview();
@@ -121,7 +137,8 @@ public class StepOneController {
 
             } else {
                 collectViewData();
-                pane.getChildren().setAll((AnchorPane) FXMLLoader.load(getClass().getClassLoader().getResource("views/ProfessionalActivitiesView.fxml")));
+                I18N.getLocale();
+                pane.getChildren().setAll((AnchorPane) FXMLLoader.load(getClass().getClassLoader().getResource("views/ProfessionalActivitiesView.fxml"), bundle));
 
             }
 
@@ -133,8 +150,9 @@ public class StepOneController {
 
     @FXML
     public void handleStepOneBackButtonAction(ActionEvent event) {
+        ResourceBundle bundle = ResourceBundle.getBundle("lang/lang");
         try {
-            pane.getChildren().setAll((AnchorPane) FXMLLoader.load(getClass().getClassLoader().getResource("views/MainMenuView.fxml")));
+            pane.getChildren().setAll((AnchorPane) FXMLLoader.load(getClass().getClassLoader().getResource("views/MainMenuView.fxml"), bundle));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -263,13 +281,16 @@ public class StepOneController {
 
     private void collectViewData() {
         int bookNumber = Integer.parseInt(bookNumberTextField.getText());
-        String date = fromDate.toString();
-
+        String date = fromDate.getValue().toString();
+        String secDate = toDate.getValue().toString();
 
         instance.setReportBookNumber(bookNumber);
         instance.setFromDate(date);
+        instance.setToDate(secDate);
         System.out.println("Book number is: " + instance.getReportBookNumber());
         System.out.println(instance.getFromDate());
+        System.out.println(instance.getToDate());
     }
+
 
 }

@@ -1,5 +1,6 @@
 package views;
 
+import backend.PDF.PDFReader;
 import org.icepdf.ri.common.SwingController;
 import org.icepdf.ri.common.SwingViewBuilder;
 
@@ -10,7 +11,7 @@ public class PDFPreview {
     private String filePath;
 
     public PDFPreview(){
-        this.filePath = "C:\\Users\\mfriedrich\\Desktop\\testFile.pdf";
+        this.filePath = "src/main/exportedfile/Report.pdf";
 
         SwingController controller = new SwingController();
         SwingViewBuilder factory = new SwingViewBuilder(controller);
@@ -27,9 +28,7 @@ public class PDFPreview {
 
         applicationFrame.pack();
         applicationFrame.setVisible(true);
-
     }
-
 
 
 }

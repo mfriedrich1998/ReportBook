@@ -6,11 +6,14 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+import java.util.ResourceBundle;
+
 public class MainView extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("views/MainMenuView.fxml"));
+        ResourceBundle bundle = ResourceBundle.getBundle("lang/lang");
+        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("views/MainMenuView.fxml"), bundle);
         primaryStage.setTitle("Report Book Creator");
         primaryStage.setScene(new Scene(root, 600, 400));
         primaryStage.show();

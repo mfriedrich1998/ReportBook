@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 7.1.0.final using JasperReports Library version 6.4.3  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="test" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="e5f1fabb-2021-48d4-a08b-95a225337c27">
+	<property name="com.jaspersoft.studio.report.description" value=""/>
+	<parameter name="DEPARTMENT" class="java.lang.String"/>
+	<parameter name="DEPARTMENT_NAME" class="java.lang.String"/>
+	<parameter name="RB_NUMBER" class="java.lang.String"/>
+	<parameter name="TRAINEES_NAME" class="java.lang.String"/>
+	<parameter name="NAME" class="java.lang.String"/>
+	<parameter name="PROFESSIONAL_ACTIVITIES" class="java.lang.String"/>
+	<parameter name="INSTRUCTIONS" class="java.lang.String"/>
+	<parameter name="ACTIVITIES" class="java.lang.String"/>
+	<parameter name="INSTRUCTIONS_HEADER" class="java.lang.String"/>
+	<parameter name="SCHOOL_SUBJECTS" class="java.lang.String"/>
+	<parameter name="SIGNATURE_TRAINEE" class="java.lang.String"/>
+	<parameter name="SIGNATURE_MENTOR" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="101" splitType="Stretch">
+			<rectangle>
+				<reportElement x="30" y="20" width="150" height="71" uuid="2e68917d-8f49-4278-b417-6bc4eb2b7de6"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="180" y="20" width="201" height="71" uuid="9716e818-ddbe-4f51-9ae3-856ecbd3cc33"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="380" y="20" width="150" height="71" uuid="83a9d284-5d20-4816-a836-b2d7cf1f5ad8"/>
+			</rectangle>
+			<image>
+				<reportElement x="40" y="30" width="40" height="41" uuid="6a891ef9-90df-4493-84a4-b985f3c22f68"/>
+				<imageExpression><![CDATA["pictures/Logo.jpg"]]></imageExpression>
+			</image>
+			<textField>
+				<reportElement positionType="Float" x="80" y="30" width="100" height="20" uuid="360b1572-e141-4844-b7aa-6cf24174d1c2"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$P{DEPARTMENT}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="80" y="61" width="100" height="21" uuid="1e8613ab-50ba-4e30-9194-b5d7d7938a9a"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$P{DEPARTMENT_NAME}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="230" y="25" width="100" height="30" uuid="41a5c2a9-2072-4bea-985b-0012096eae6a"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$P{RB_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="400" y="25" width="100" height="30" uuid="bfa1a2e1-74d7-4a5e-a25c-ce6e133f00f9"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$P{TRAINEES_NAME}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="400" y="61" width="100" height="19" uuid="a1612bb9-c96a-49e1-ba3a-8c45f04d019c"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$P{NAME}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="400" splitType="Stretch">
+			<frame>
+				<reportElement x="30" y="-1" width="501" height="191" uuid="fc6d9dbc-0827-40c8-8ac2-f3672a17745a"/>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+
+				<subreport>
+					<reportElement mode="Opaque" x="0" y="0" width="501" height="191" uuid="a57afce7-71c5-4bf0-af63-94fd518b3d24"/>
+					<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					<subreportExpression><![CDATA["Blank_A4_4.jasper"]]></subreportExpression>
+				</subreport>
+
+
+			</frame>
+			<frame>
+				<reportElement x="30" y="190" width="501" height="210" uuid="29e023ba-2938-4b87-9c3d-9044c389ba81"/>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+
+				<subreport>
+					<reportElement mode="Opaque" x="0" y="0" width="501" height="210" uuid="a1c75f89-a85c-4dd2-8ab2-f8626d9f2309"/>
+					<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					<subreportExpression><![CDATA["Blank_A4_5.jasper"]]></subreportExpression>
+				</subreport>
+
+			</frame>
+		</band>
+	</pageHeader>
+	<pageFooter>
+		<band height="301" splitType="Stretch">
+			<rectangle>
+				<reportElement x="30" y="0" width="501" height="190" uuid="45ce9371-24b1-4f1e-a42a-c7eceb5f0e16"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="30" y="200" width="251" height="71" uuid="0bfcf361-fc76-4ab3-8a08-e88cfce70bb5"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="279" y="200" width="251" height="71" uuid="ff45e9ab-a906-4f3d-95a8-a6818d93439a"/>
+			</rectangle>
+			<textField>
+				<reportElement x="40" y="10" width="154" height="30" uuid="3d996782-07f9-4464-90ab-261e428ff4e1"/>
+				<textFieldExpression><![CDATA[$P{SCHOOL_SUBJECTS}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="60" y="200" width="170" height="30" uuid="17633806-6bf3-4da6-b2c8-3d5c183d98ea"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$P{SIGNATURE_TRAINEE}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="320" y="200" width="168" height="30" uuid="269e64b9-2b23-4556-8062-2dda1aed393a"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$P{SIGNATURE_MENTOR}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+</jasperReport>

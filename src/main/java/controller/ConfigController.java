@@ -14,6 +14,7 @@ import javafx.stage.Window;
 
 import java.io.IOException;
 import java.util.Optional;
+import java.util.ResourceBundle;
 
 
 public class ConfigController {
@@ -41,11 +42,11 @@ public class ConfigController {
         alert.setHeaderText(I18N.get("key29"));
         alert.contentTextProperty().bind(I18N.createStringBinding("key30"));
 
-
+        ResourceBundle bundle = ResourceBundle.getBundle("lang/lang");
         try {
             Optional<ButtonType> result = alert.showAndWait();
             if (result.get() == ButtonType.OK) {
-                pane.getChildren().setAll((AnchorPane) FXMLLoader.load(getClass().getClassLoader().getResource("views/MainMenuView.fxml")));
+                pane.getChildren().setAll((AnchorPane) FXMLLoader.load(getClass().getClassLoader().getResource("views/MainMenuView.fxml"), bundle));
             } else if (result.get() == ButtonType.CANCEL) {
                 alert.close();
             }
@@ -84,8 +85,9 @@ public class ConfigController {
         alert.setHeaderText(I18N.get("key28"));
         alert.showAndWait();
 
+        ResourceBundle bundle = ResourceBundle.getBundle("lang/lang");
         try {
-            pane.getChildren().setAll((AnchorPane) FXMLLoader.load(getClass().getClassLoader().getResource("views/MainMenuView.fxml")));
+            pane.getChildren().setAll((AnchorPane) FXMLLoader.load(getClass().getClassLoader().getResource("views/MainMenuView.fxml"), bundle));
         } catch (IOException e) {
             e.printStackTrace();
         }

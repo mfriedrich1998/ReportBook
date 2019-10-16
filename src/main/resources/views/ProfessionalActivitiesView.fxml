@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-
+<?import java.lang.*?>
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-
 
 <AnchorPane fx:id="pane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ActivitiesController">
    <children>
@@ -14,10 +13,10 @@
       <Circle fx:id="step3Circle" fill="#1f93ff00" layoutX="300.0" layoutY="23.0" radius="9.0" stroke="#00000091" strokeType="INSIDE" />
       <Circle fx:id="step4Circle" fill="#1f93ff00" layoutX="323.0" layoutY="23.0" radius="9.0" stroke="#00000091" strokeType="INSIDE" />
       <Circle fx:id="step5Circle" fill="#1f93ff00" layoutX="347.0" layoutY="23.0" radius="9.0" stroke="#00000091" strokeType="INSIDE" />
-      <Button fx:id="activitiesBackButton" layoutX="404.0" layoutY="361.0" mnemonicParsing="false" onAction="#handleActivitiesBackButtonAction" prefHeight="25.0" prefWidth="88.0" text="Back" />
-      <Button fx:id="activitiesNextButton" layoutX="492.0" layoutY="361.0" mnemonicParsing="false" onAction="#handleActivitiesNextButtonAction" prefHeight="25.0" prefWidth="88.0" text="Next" />
+      <Button fx:id="activitiesBackButton" layoutX="404.0" layoutY="361.0" mnemonicParsing="false" onAction="#handleActivitiesBackButtonAction" prefHeight="25.0" prefWidth="88.0" text="%key5" />
+      <Button fx:id="activitiesNextButton" layoutX="492.0" layoutY="361.0" mnemonicParsing="false" onAction="#handleActivitiesNextButtonAction" prefHeight="25.0" prefWidth="88.0" text="%key34" />
       <Separator layoutX="15.0" layoutY="347.0" prefHeight="0.0" prefWidth="570.0" />
-      <Label fx:id="ProfessionalActivitiesLabel" layoutX="65.0" layoutY="77.0" prefHeight="17.0" prefWidth="187.0" text="Add Professional Activities :">
+      <Label fx:id="ProfessionalActivitiesLabel" layoutX="65.0" layoutY="77.0" prefHeight="17.0" prefWidth="187.0" text="%key19">
          <font>
             <Font name="Arial" size="15.0" />
          </font>

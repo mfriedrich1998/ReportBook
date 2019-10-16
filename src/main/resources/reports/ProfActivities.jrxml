@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 7.1.0.final using JasperReports Library version 6.4.3  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Blank_A4_4.jasper" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="9de4bf8f-fd54-4e7f-a064-48dc1ac4c6a0">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+	<parameter name="PROFESSIONAL_ACTIVITIES" class="java.lang.String"/>
+	<parameter name="ACTIVITIES" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<detail>
+		<band height="125" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="167" height="20" uuid="28110abd-d753-4527-81a7-9635cb0558f8"/>
+				<textFieldExpression><![CDATA[$P{PROFESSIONAL_ACTIVITIES}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="0" y="30" width="100" height="30" uuid="439b8992-34a5-4da8-85b7-0dc51f941884"/>
+				<textFieldExpression><![CDATA[$P{ACTIVITIES}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

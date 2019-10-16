@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 7.1.0.final using JasperReports Library version 6.4.3  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Blank_A4_5.jasper" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="4490facf-c7ac-4dab-80f8-5af2f13e11e3">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+	<parameter name="INSTRUCTIONS_HEADER" class="java.lang.String"/>
+	<parameter name="INSTRUCTIONS" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<detail>
+		<band height="125" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="164" height="20" uuid="0538ed64-f01b-4d9e-aa4f-7ece29eb7eee"/>
+				<textFieldExpression><![CDATA[$P{INSTRUCTIONS_HEADER}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="0" y="30" width="100" height="30" uuid="3a7161cd-869a-4e0c-989e-87eb5d150654"/>
+				<textFieldExpression><![CDATA[$P{INSTRUCTIONS}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>
