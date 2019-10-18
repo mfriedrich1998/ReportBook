@@ -11,7 +11,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
-import views.PDFPreview;
 
 import java.io.IOException;
 import java.util.ResourceBundle;
@@ -132,9 +131,6 @@ public class StepOneController {
             }
             if (sickDaysWeek.isSelected() || vacDaysWeek.isSelected()) {
                 collectViewData();
-                PDFPreview pdfPreview = new PDFPreview();
-                System.out.println(pdfPreview);
-
             } else {
                 collectViewData();
                 I18N.getLocale();

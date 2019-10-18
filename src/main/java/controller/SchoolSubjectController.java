@@ -1,18 +1,17 @@
 package controller;
 
-import backend.PDF.PDFReader;
+import backend.PDF.PDFGenerator;
 import backend.saveinstance.SaveInstance;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
-
-import views.PDFPreview;
 
 import java.io.IOException;
 import java.util.ResourceBundle;
@@ -59,9 +58,14 @@ public class SchoolSubjectController {
     public void handleSchoolSubjectsNextButtonAction(ActionEvent event) {
         collectViewData();
         System.out.println(instance.getInstructionsText());
-        PDFPreview pdfPreview = new PDFPreview();
-        System.out.println(pdfPreview);
-
+        PDFGenerator pdfGenerator = new PDFGenerator();
+        pdfGenerator.printPDF();
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Information Dialog");
+        alert.setHeaderText("PDF Gespeichert");
+        alert.setContentText("I have a great message for you!");
+        alert.showAndWait();
+        System.exit(0);
     }
 
     @FXML

@@ -6,24 +6,25 @@ import net.sf.jasperreports.engine.util.JRSaver;
 
 import java.io.InputStream;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 import java.util.Map;
 
 
-public class PDFReader {
-
+public class PDFGenerator {
 
 
     public static void main(String[] args) {
 
-        PDFReader reader = new PDFReader();
+        PDFGenerator reader = new PDFGenerator();
         reader.printPDF();
 
     }
 
     public void printPDF() {
 
-        InputStream resource = PDFReader.class.getResourceAsStream("../../reports/Report.jrxml");
+        InputStream resource = PDFGenerator.class.getResourceAsStream("../../reports/Report.jrxml");
 
         System.out.println("Compiling Report Design ...");
         try {
@@ -34,7 +35,7 @@ public class PDFReader {
             JasperReport jasperReport = JasperCompileManager.compileReport(resource);
 
             Map<String, Object> params = new HashMap<String, Object>();
-            params.put("RB_NUMBER","Report Book Number ");
+            params.put("RB_NUMBER", "Report Book Number ");
             params.put("DEPARTMENT", "Department");
             params.put("DEPARTMENT_NAME", "SustainHub");
             params.put("TRAINEES_NAME", "Trainees name");
@@ -42,9 +43,9 @@ public class PDFReader {
             params.put("SIGNATURE_TRAINEE", "Signature trainee");
             params.put("SIGNATURE_MENTOR", "Signature mentor");
 
-            InputStream subreport1 = PDFReader.class.getResourceAsStream("../../reports/ProfActivities.jrxml");
+            InputStream subreport1 = PDFGenerator.class.getResourceAsStream("../../reports/ProfActivities.jrxml");
 
-            InputStream subreport2 = PDFReader.class.getResourceAsStream("../../reports/Instuctions.jrxml");
+            InputStream subreport2 = PDFGenerator.class.getResourceAsStream("../../reports/Instuctions.jrxml");
 
             JRSaver.saveObject(JasperCompileManager.compileReport(subreport1), "Blank_A4_4.jasper");
 
@@ -52,7 +53,7 @@ public class PDFReader {
 
             JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, params, new JREmptyDataSource());
 
-            JasperExportManager.exportReportToPdfFile(jasperPrint, "src/main/exportedfile/Report.pdf");
+            JasperExportManager.exportReportToPdfFile(jasperPrint, "./Report-" + getCurrentDate() + ".pdf");
 
 
         } catch (JRException e) {
@@ -61,5 +62,13 @@ public class PDFReader {
         System.out.println("Done compiling!!! ...");
 
     }
+
+    private String getCurrentDate() {
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+        LocalDateTime now = LocalDateTime.now();
+        String currentDate = dtf.format(now);
+        return currentDate;
+    }
+
 
 }
