@@ -1,6 +1,6 @@
 package views;
 
-import backend.PDF.PDFReader;
+
 import org.icepdf.ri.common.SwingController;
 import org.icepdf.ri.common.SwingViewBuilder;
 

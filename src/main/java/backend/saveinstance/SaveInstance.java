@@ -114,11 +114,14 @@ public class SaveInstance {
         this.toDate = toDate;
     }
 
-    public Locale getLang(){
+    public Locale getLang() {
         return lang;
     }
 
-    public void setLang(Locale lang){
+    public void setLang(Locale lang) {
         this.lang = lang;
     }
+
+
 }
+
