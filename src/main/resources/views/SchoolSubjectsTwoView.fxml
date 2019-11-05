@@ -6,19 +6,6 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
-<?import java.lang.String?>
-<?import javafx.collections.FXCollections?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ChoiceBox?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Separator?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.RowConstraints?>
-<?import javafx.scene.shape.Circle?>
-<?import javafx.scene.text.Font?>
 
 <AnchorPane fx:id="pane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.SchoolSubjectController">
     <children>
@@ -59,13 +46,13 @@
                 <ChoiceBox fx:id="subjectChoiceBox" prefHeight="25.0" prefWidth="87.0" value="ITS">
                     <items>
                         <FXCollections fx:factory="observableArrayList">
-                            <String fx:value="ITS" />
-                            <String fx:value="Labor" />
-                            <String fx:value="SAE" />
-                            <String fx:value="Deutsch/GK" />
-                            <String fx:value="Englisch" />
-                            <String fx:value="Wirtschaft" />
-                            <String fx:value="BWL" />
+                            <String fx:value="ITS" fx:id="its" />
+                            <String fx:value="Labor" fx:id="labor"/>
+                            <String fx:value="SAE" fx:id="sae" />
+                            <String fx:value="Deutsch/GK" fx:id="dgk"/>
+                            <String fx:value="Englisch" fx:id="eng"/>
+                            <String fx:value="Wirtschaft" fx:id="wi"/>
+                            <String fx:value="BWL" fx:id="bwl"/>
                         </FXCollections>
                     </items>
                 </ChoiceBox>
@@ -74,13 +61,13 @@
                 <ChoiceBox fx:id="secondSubjectChoiceBox" prefHeight="25.0" prefWidth="92.0" value="ITS" GridPane.columnIndex="3">
                     <items>
                         <FXCollections fx:factory="observableArrayList">
-                            <String fx:value="ITS" />
-                            <String fx:value="Labor" />
-                            <String fx:value="SAE" />
-                            <String fx:value="Deutsch/GK" />
-                            <String fx:value="Englisch" />
-                            <String fx:value="Wirtschaft" />
-                            <String fx:value="BWL" />
+                            <String fx:value="ITS" fx:id="its2" />
+                            <String fx:value="Labor" fx:id="labor2"/>
+                            <String fx:value="SAE" fx:id="sae2" />
+                            <String fx:value="Deutsch/GK" fx:id="dgk2"/>
+                            <String fx:value="Englisch" fx:id="eng2"/>
+                            <String fx:value="Wirtschaft" fx:id="wi2"/>
+                            <String fx:value="BWL" fx:id="bwl2"/>
                         </FXCollections>
                     </items>
                 </ChoiceBox>

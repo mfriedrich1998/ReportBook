@@ -14,10 +14,16 @@
 		<band height="125" splitType="Stretch">
 			<textField>
 				<reportElement x="0" y="0" width="164" height="20" uuid="0538ed64-f01b-4d9e-aa4f-7ece29eb7eee"/>
+				<textElement>
+					<font fontName="Arial" size="9"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$P{INSTRUCTIONS_HEADER}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
 				<reportElement x="0" y="30" width="100" height="30" uuid="3a7161cd-869a-4e0c-989e-87eb5d150654"/>
+				<textElement>
+					<font fontName="Arial" size="10"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$P{INSTRUCTIONS}]]></textFieldExpression>
 			</textField>
 		</band>

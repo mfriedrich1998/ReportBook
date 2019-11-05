@@ -41,6 +41,7 @@ public class InstructionsController {
 
     @FXML
     public void handleInstructionsBackButtonAction(ActionEvent event) {
+        InstructionsTextArea.setText(instance.getInstructionsText());
         ResourceBundle bundle = ResourceBundle.getBundle("lang/lang");
         try {
             pane.getChildren().setAll((AnchorPane) FXMLLoader.load(getClass().getClassLoader().getResource("views/ProfessionalActivitiesView.fxml"), bundle));

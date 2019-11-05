@@ -5,7 +5,7 @@ import backend.saveinstance.SaveInstance;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-
+import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
@@ -14,11 +14,20 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.ResourceBundle;
 
-public class SchoolSubjectController {
+public class SchoolSubjectController implements Initializable {
 
     private SaveInstance instance = SaveInstance.getInstance();
+
+    private Map<ChoiceBox, TextField> left;
+
+    private Map<ChoiceBox, TextField> right;
+
 
     @FXML
     private AnchorPane pane;
@@ -80,7 +89,7 @@ public class SchoolSubjectController {
 
     @FXML
     public void handleMoreButtonAction(ActionEvent event) {
-
+        left = new HashMap<>();
         TextField textField = new TextField();
         ChoiceBox choiceBox = new ChoiceBox();
         choiceBox.setValue("ITS");
@@ -95,11 +104,13 @@ public class SchoolSubjectController {
         } else {
             moreButton.setDisable(true);
         }
+        left.put(choiceBox,textField);
     }
 
 
     @FXML
     public void handleSecondMoreButtonAction(ActionEvent e) {
+        right = new HashMap<>();
         TextField textField = new TextField();
         ChoiceBox choiceBox = new ChoiceBox();
         choiceBox.setValue("ITS");
@@ -114,10 +125,18 @@ public class SchoolSubjectController {
         } else {
             SecondMoreButton.setDisable(true);
         }
+        right.put(choiceBox,textField);
+
     }
 
 
     private void collectViewData() {
+
+        if(left.size() > 1) {
+            instance.setBoxes(left);
+        }
+
+
         String subject = subjectChoiceBox.getValue().toString();
         String input = subjectTextField.getText();
 
@@ -132,6 +151,12 @@ public class SchoolSubjectController {
         System.out.println(instance.getSubjectInput());
         System.out.println(instance.getSecondSchoolSubject());
         System.out.println(instance.getSecondSubjectInput());
+        System.out.println(instance.getBoxes());
+    }
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+
     }
 }
 

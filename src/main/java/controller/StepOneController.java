@@ -33,16 +33,6 @@ public class StepOneController {
     private DatePicker toDate;
 
     @FXML
-    private RadioButton sickDaysWeek;
-
-    @FXML
-    private RadioButton vacDaysWeek;
-
-    private ObservableSet<RadioButton> selected = FXCollections.observableSet();
-
-    private ObservableSet<RadioButton> unselected = FXCollections.observableSet();
-
-    @FXML
     private CheckBox SchoolMoCheckBox;
 
     @FXML
@@ -109,12 +99,18 @@ public class StepOneController {
 
     private IntegerBinding sickNumCheckBoxesSelected = Bindings.size(sickSelectedCheckBoxes);
 
+    @FXML
+    private ToggleButton sickWeek;
+
+    @FXML
+    private ToggleButton vacWeek;
+
 
     @FXML
     public void handleStepOneNextButtonAction(ActionEvent event) {
         ResourceBundle bundle = ResourceBundle.getBundle("lang/lang");
         try {
-            if(bookNumberTextField.getText().isEmpty()) {
+            if (bookNumberTextField.getText().isEmpty()) {
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setHeaderText(I18N.get("key25"));
                 alert.contentTextProperty().bind(I18N.createStringBinding("key31"));
@@ -122,15 +118,12 @@ public class StepOneController {
                 return;
             }
 
-            if(fromDate.getValue() == null){
+            if (fromDate.getValue() == null) {
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setHeaderText(I18N.get("key25"));
                 alert.contentTextProperty().bind(I18N.createStringBinding("key32"));
                 alert.showAndWait();
                 return;
-            }
-            if (sickDaysWeek.isSelected() || vacDaysWeek.isSelected()) {
-                collectViewData();
             } else {
                 collectViewData();
                 I18N.getLocale();
@@ -138,7 +131,8 @@ public class StepOneController {
 
             }
 
-        } catch (IOException e) {
+        } catch (
+                IOException e) {
             e.printStackTrace();
         }
 
@@ -158,14 +152,6 @@ public class StepOneController {
     private void ChooseFromDateToDate() {
         toDate.setValue(fromDate.getValue().plusDays(4));
 
-    }
-
-
-    @FXML
-    public void handleRadioButtonAction() {
-        ToggleGroup toggleGroup = new ToggleGroup();
-        sickDaysWeek.setToggleGroup(toggleGroup);
-        vacDaysWeek.setToggleGroup(toggleGroup);
     }
 
 
@@ -272,6 +258,14 @@ public class StepOneController {
                 sickUnselectedCheckBoxes.forEach(checkBox -> checkBox.setDisable(false));
             }
         }));
+    }
+
+    @FXML
+    public void handleToggleButtonAction() {
+        ToggleGroup group = new ToggleGroup();
+        vacWeek.setToggleGroup(group);
+        sickWeek.setToggleGroup(group);
+
     }
 
 

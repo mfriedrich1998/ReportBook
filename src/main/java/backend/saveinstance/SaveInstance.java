@@ -1,12 +1,17 @@
 package backend.saveinstance;
 
+import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.TextField;
+
 import java.util.Locale;
+import java.util.Map;
 
 public class SaveInstance {
 
 
     private static SaveInstance INSTANCE;
 
+    private Map<ChoiceBox, TextField> boxes;
 
     private int reportBookNumber;
 
@@ -122,6 +127,12 @@ public class SaveInstance {
         this.lang = lang;
     }
 
+    public Map<ChoiceBox, TextField> getBoxes() {
+        return boxes;
+    }
 
+    public void setBoxes(Map<ChoiceBox, TextField> boxes) {
+        this.boxes = boxes;
+    }
 }
 

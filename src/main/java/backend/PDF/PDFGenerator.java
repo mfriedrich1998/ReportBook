@@ -78,7 +78,7 @@ public class PDFGenerator {
             JasperReport jasperReport = JasperCompileManager.compileReport(resource);
 
             Map<String, Object> params = new HashMap<String, Object>();
-            params.put("RB_NUMBER", rbNumber + number );
+            params.put("RB_NUMBER", rbNumber + " " + number );
             params.put("DEPARTMENT", department);
             params.put("DEPARTMENT_NAME", "SustainHub");
             params.put("TRAINEES_NAME", name);
@@ -92,7 +92,7 @@ public class PDFGenerator {
             params.put("PROFESSIONAL_ACTIVITIES", profActivities);
             params.put("INSTRUCTIONS_HEADER", instruction);
             params.put("INSTRUCTIONS", instructions);
-            params.put("FROM_TODATE", from + firstDate + to + toDate);
+            params.put("FROM_TODATE", from +  firstDate + " " + to + toDate);
 
             InputStream subreport1 = PDFGenerator.class.getResourceAsStream("../../reports/ProfActivities.jrxml");
 
