@@ -132,11 +132,6 @@ public class SchoolSubjectController implements Initializable {
 
     private void collectViewData() {
 
-        if(left.size() > 1) {
-            instance.setBoxes(left);
-        }
-
-
         String subject = subjectChoiceBox.getValue().toString();
         String input = subjectTextField.getText();
 
