@@ -111,16 +111,6 @@ public class ConfigController implements Initializable {
         csv.close();
     }
 
-    private String load(String fileName) {
-        String string;
-        CSV csv = new CSV();
-        csv.open(fileName, 'l');
-        string = csv.load(fileName);
-        csv.close();
-
-        return string;
-    }
-
     private void collectData(){
 
         instance.setName(nameTextField.getText());
@@ -131,8 +121,14 @@ public class ConfigController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
-
+        SaveInstance si = SaveInstance.getInstance();
+        if (si.loadConfigurationIfExisting("config")) {
+            nameTextField.setText(si.getName());
+            departmentTextField.setText(si.getDepartment());
+        } else {
+            nameTextField.setText("");
+            departmentTextField.setText("");
+        }
     }
 
 }

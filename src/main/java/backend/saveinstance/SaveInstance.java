@@ -1,5 +1,6 @@
 package backend.saveinstance;
 
+import backend.CSVConfig.CSV;
 import javafx.collections.ObservableSet;
 import java.time.LocalDate;
 import java.util.Locale;
@@ -46,6 +47,20 @@ public class SaveInstance {
             return SaveInstance.INSTANCE;
         }
         return INSTANCE;
+    }
+
+
+    public boolean loadConfigurationIfExisting(String fileName) {
+        CSV csv = new CSV();
+        csv.open(fileName, 'l');
+        csv.load(fileName);
+
+        if (INSTANCE.getName() != null && INSTANCE.getDepartment() != null) {
+            csv.close();
+            return true;
+        }
+        csv.close();
+        return false;
     }
 
 

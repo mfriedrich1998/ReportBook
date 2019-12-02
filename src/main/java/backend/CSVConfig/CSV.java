@@ -1,29 +1,27 @@
 package backend.CSVConfig;
 
+import backend.saveinstance.SaveInstance;
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 
 public class CSV {
-    private FileReader fileReader = null;
-    private FileWriter fileWriter = null;
-    private BufferedReader bufferedReader = null;
+    private static FileReader fileReader = null;
+    private static FileWriter fileWriter = null;
+    private static BufferedReader bufferedReader = null;
 
 
     public void open(String fileName, char mode) {
-        if (mode == 's') {
-            try {
+        try {
+            if (mode == 's') {
                 fileWriter = new FileWriter(fileName + ".csv");
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        } else if (mode == 'l') {
-            try {
+            } else if (mode == 'l') {
                 fileReader = new FileReader(fileName + ".csv");
-            } catch (IOException e) {
-                e.printStackTrace();
             }
+        } catch (IOException e) {
+            //nothing to show. Then config does not exist
         }
     }
 
@@ -32,7 +30,7 @@ public class CSV {
         try {
             StringBuilder stringBuilder = new StringBuilder();
             stringBuilder.append(string);
-            stringBuilder.append("\n");
+            stringBuilder.append(",");
             fileWriter.write(stringBuilder.toString());
         } catch (IOException e) {
             e.printStackTrace();
@@ -40,31 +38,28 @@ public class CSV {
     }
 
 
-    public String load(String fileName) {
+    public void load(String fileName) {
         String loadedString = "";
-        StringBuilder stringBuilder = new StringBuilder();
-
 
         try {
             fileReader = new FileReader(fileName + ".csv");
             bufferedReader = new BufferedReader(fileReader);
-
+            String name = null;
+            String department = null;
             while ((loadedString = bufferedReader.readLine()) != null) {
-                String[] personsAttribute = loadedString.split("\n");
-                String name = personsAttribute[0];
-                String department = personsAttribute[1];
-
-                stringBuilder.append(name);
-                stringBuilder.append("\n");
-                stringBuilder.append(department);
-
+                String[] personsAttribute = loadedString.split(",");
+                name = personsAttribute[0];
+                department = personsAttribute[1];
+                break;
             }
-
+            SaveInstance sv = SaveInstance.getInstance();
+            sv.setName(name);
+            sv.setDepartment(department);
         } catch (Exception e) {
-            e.printStackTrace();
+            SaveInstance sv = SaveInstance.getInstance();
+            sv.setName(null);
+            sv.setDepartment(null);
         }
-
-        return stringBuilder.toString();
     }
 
 
