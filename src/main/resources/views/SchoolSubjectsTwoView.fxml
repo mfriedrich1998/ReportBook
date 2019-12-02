@@ -1,13 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import javafx.collections.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.shape.*?>
-<?import javafx.scene.text.*?>
+<?import java.lang.String?>
+<?import javafx.collections.FXCollections?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="pane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.SchoolSubjectController">
+<AnchorPane fx:id="pane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.SchoolSubjectController">
     <children>
         <Circle fx:id="step1Circle" fill="#1f93ff00" layoutX="252.0" layoutY="23.0" radius="9.0" stroke="#00000091" strokeType="INSIDE" />
         <Circle fx:id="step2Circle" fill="#1f93ff00" layoutX="276.0" layoutY="23.0" radius="9.0" stroke="#00000091" strokeType="INSIDE" />
@@ -17,7 +24,7 @@
         <Button fx:id="backButton" layoutX="404.0" layoutY="361.0" mnemonicParsing="false" onAction="#handleSchoolSubjectsBackButtonAction" prefHeight="25.0" prefWidth="88.0" text="%key5" />
         <Button fx:id="previewButton" layoutX="492.0" layoutY="361.0" mnemonicParsing="false" onAction="#handleSchoolSubjectsNextButtonAction" prefHeight="25.0" prefWidth="88.0" text="%key24" />
         <Separator layoutX="15.0" layoutY="347.0" prefHeight="0.0" prefWidth="570.0" />
-        <Label fx:id="SchoolSubjectLabel" layoutX="33.0" layoutY="43.0" prefHeight="17.0" prefWidth="187.0" text="%key36">
+        <Label fx:id="SchoolSubjectLabel" layoutX="33.0" layoutY="43.0" prefHeight="17.0" prefWidth="535.0" text="%key36">
             <font>
                 <Font name="Arial" size="15.0" />
             </font>
@@ -43,36 +50,206 @@
                 <RowConstraints maxHeight="143.0" minHeight="10.0" prefHeight="32.0" vgrow="SOMETIMES" />
             </rowConstraints>
             <children>
-                <ChoiceBox fx:id="subjectChoiceBox" prefHeight="25.0" prefWidth="87.0" value="ITS">
+                <ChoiceBox fx:id="subjectChoiceBox" prefHeight="25.0" prefWidth="87.0" value=" ">
                     <items>
                         <FXCollections fx:factory="observableArrayList">
-                            <String fx:value="ITS" fx:id="its" />
-                            <String fx:value="Labor" fx:id="labor"/>
-                            <String fx:value="SAE" fx:id="sae" />
-                            <String fx:value="Deutsch/GK" fx:id="dgk"/>
-                            <String fx:value="Englisch" fx:id="eng"/>
-                            <String fx:value="Wirtschaft" fx:id="wi"/>
-                            <String fx:value="BWL" fx:id="bwl"/>
+                            <String fx:id="its" fx:value="ITS" />
+                            <String fx:id="labor" fx:value="Labor" />
+                            <String fx:id="sae" fx:value="SAE" />
+                            <String fx:id="dgk" fx:value="Deutsch/GK" />
+                            <String fx:id="eng" fx:value="Englisch" />
+                            <String fx:id="wi" fx:value="Wirtschaft" />
+                            <String fx:id="bwl" fx:value="BWL" />
                         </FXCollections>
                     </items>
                 </ChoiceBox>
                 <TextField fx:id="subjectTextField" prefHeight="25.0" prefWidth="133.0" GridPane.columnIndex="1" />
                 <Button fx:id="moreButton" mnemonicParsing="false" onAction="#handleMoreButtonAction" prefHeight="25.0" prefWidth="77.0" text="%key35" GridPane.rowIndex="7" />
-                <ChoiceBox fx:id="secondSubjectChoiceBox" prefHeight="25.0" prefWidth="92.0" value="ITS" GridPane.columnIndex="3">
+                <ChoiceBox fx:id="secondSubjectChoiceBox" prefHeight="25.0" prefWidth="92.0" value=" " GridPane.columnIndex="3">
                     <items>
                         <FXCollections fx:factory="observableArrayList">
-                            <String fx:value="ITS" fx:id="its2" />
-                            <String fx:value="Labor" fx:id="labor2"/>
-                            <String fx:value="SAE" fx:id="sae2" />
-                            <String fx:value="Deutsch/GK" fx:id="dgk2"/>
-                            <String fx:value="Englisch" fx:id="eng2"/>
-                            <String fx:value="Wirtschaft" fx:id="wi2"/>
-                            <String fx:value="BWL" fx:id="bwl2"/>
+                            <String fx:id="its2" fx:value="ITS" />
+                            <String fx:id="labor2" fx:value="Labor" />
+                            <String fx:id="sae2" fx:value="SAE" />
+                            <String fx:id="dgk2" fx:value="Deutsch/GK" />
+                            <String fx:id="eng2" fx:value="Englisch" />
+                            <String fx:id="wi2" fx:value="Wirtschaft" />
+                            <String fx:id="bwl2" fx:value="BWL" />
                         </FXCollections>
                     </items>
                 </ChoiceBox>
                 <TextField fx:id="secondSubjectTextField" prefHeight="25.0" prefWidth="149.0" GridPane.columnIndex="4" />
                 <Button fx:id="SecondMoreButton" mnemonicParsing="false" onAction="#handleSecondMoreButtonAction" prefHeight="25.0" prefWidth="77.0" text="%key35" GridPane.columnIndex="3" GridPane.rowIndex="7" />
+            <Button fx:id="deleteButton" mnemonicParsing="false" text="%key47" GridPane.columnIndex="1" GridPane.rowIndex="7" onAction="#handleDeleteButtonAction" />
+            <Button fx:id="secDeleteButton" mnemonicParsing="false" text="%key47" GridPane.columnIndex="4" GridPane.rowIndex="7" onAction="#handleSecondDeleteButtonAction" />
+            <ChoiceBox fx:id="subjectChoiceBox2" prefWidth="150.0" GridPane.rowIndex="1" visible="false" value=" " >
+                <items>
+                    <FXCollections fx:factory="observableArrayList">
+                        <String fx:id="1its" fx:value="ITS" />
+                        <String fx:id="1labor" fx:value="Labor" />
+                        <String fx:id="1sae" fx:value="SAE" />
+                        <String fx:id="1dgk" fx:value="Deutsch/GK" />
+                        <String fx:id="1eng" fx:value="Englisch" />
+                        <String fx:id="1wi" fx:value="Wirtschaft" />
+                        <String fx:id="1bwl" fx:value="BWL" />
+                    </FXCollections>
+                </items>
+            </ChoiceBox>
+            <ChoiceBox fx:id="subjectChoiceBox3" prefWidth="150.0" GridPane.rowIndex="2" visible="false" value=" " >
+                <items>
+                    <FXCollections fx:factory="observableArrayList">
+                        <String fx:id="2its" fx:value="ITS" />
+                        <String fx:id="2labor" fx:value="Labor" />
+                        <String fx:id="2sae" fx:value="SAE" />
+                        <String fx:id="2dgk" fx:value="Deutsch/GK" />
+                        <String fx:id="2eng" fx:value="Englisch" />
+                        <String fx:id="2wi" fx:value="Wirtschaft" />
+                        <String fx:id="2bwl" fx:value="BWL" />
+                    </FXCollections>
+                </items>
+            </ChoiceBox>
+            <ChoiceBox fx:id="subjectChoiceBox4" prefWidth="150.0" GridPane.rowIndex="3" visible="false" value=" " >
+                <items>
+                    <FXCollections fx:factory="observableArrayList">
+                        <String fx:id="3its" fx:value="ITS" />
+                        <String fx:id="3labor" fx:value="Labor" />
+                        <String fx:id="3sae" fx:value="SAE" />
+                        <String fx:id="3dgk" fx:value="Deutsch/GK" />
+                        <String fx:id="3eng" fx:value="Englisch" />
+                        <String fx:id="3wi" fx:value="Wirtschaft" />
+                        <String fx:id="3bwl" fx:value="BWL" />
+                    </FXCollections>
+                </items>
+            </ChoiceBox>
+            <ChoiceBox fx:id="subjectChoiceBox5" prefWidth="150.0" GridPane.rowIndex="4" visible="false" value=" " >
+                <items>
+                    <FXCollections fx:factory="observableArrayList">
+                        <String fx:id="4its" fx:value="ITS" />
+                        <String fx:id="4labor" fx:value="Labor" />
+                        <String fx:id="4sae" fx:value="SAE" />
+                        <String fx:id="4dgk" fx:value="Deutsch/GK" />
+                        <String fx:id="4eng" fx:value="Englisch" />
+                        <String fx:id="4wi" fx:value="Wirtschaft" />
+                        <String fx:id="4bwl" fx:value="BWL" />
+                    </FXCollections>
+                </items>
+            </ChoiceBox>
+            <ChoiceBox fx:id="subjectChoiceBox6" prefWidth="150.0" GridPane.rowIndex="5" visible="false" value=" " >
+                <items>
+                    <FXCollections fx:factory="observableArrayList">
+                        <String fx:id="5its" fx:value="ITS" />
+                        <String fx:id="5labor" fx:value="Labor" />
+                        <String fx:id="5sae" fx:value="SAE" />
+                        <String fx:id="5dgk" fx:value="Deutsch/GK" />
+                        <String fx:id="5eng" fx:value="Englisch" />
+                        <String fx:id="5wi" fx:value="Wirtschaft" />
+                        <String fx:id="5bwl" fx:value="BWL" />
+                    </FXCollections>
+                </items>
+            </ChoiceBox>
+            <TextField fx:id="subjectTextField2" GridPane.columnIndex="1" GridPane.rowIndex="1" visible="false"/>
+            <TextField fx:id="subjectTextField3" GridPane.columnIndex="1" GridPane.rowIndex="2" visible="false"/>
+            <TextField fx:id="subjectTextField4" GridPane.columnIndex="1" GridPane.rowIndex="3" visible="false"/>
+            <TextField fx:id="subjectTextField5" GridPane.columnIndex="1" GridPane.rowIndex="4" visible="false"/>
+            <TextField fx:id="subjectTextField6" GridPane.columnIndex="1" GridPane.rowIndex="5" visible="false"/>
+            <TextField fx:id="secondSubjectTextField2" GridPane.columnIndex="4" GridPane.rowIndex="1" visible="false"/>
+            <TextField fx:id="secondSubjectTextField3" GridPane.columnIndex="4" GridPane.rowIndex="2" visible="false"/>
+            <TextField fx:id="secondSubjectTextField4" GridPane.columnIndex="4" GridPane.rowIndex="3" visible="false"/>
+            <TextField fx:id="secondSubjectTextField5" GridPane.columnIndex="4" GridPane.rowIndex="4" visible="false"/>
+            <TextField fx:id="secondSubjectTextField6" GridPane.columnIndex="4" GridPane.rowIndex="5" visible="false"/>
+            <TextField fx:id="secondSubjectTextField7" GridPane.columnIndex="4" GridPane.rowIndex="6" visible="false"/>
+            <TextField fx:id="subjectTextField7" GridPane.columnIndex="1" GridPane.rowIndex="6" visible="false"/>
+            <ChoiceBox fx:id="subjectChoiceBox7" prefWidth="150.0" GridPane.rowIndex="6" visible="false" value=" " >
+                <items>
+                    <FXCollections fx:factory="observableArrayList">
+                        <String fx:id="6its" fx:value="ITS" />
+                        <String fx:id="6labor" fx:value="Labor" />
+                        <String fx:id="6sae" fx:value="SAE" />
+                        <String fx:id="6dgk" fx:value="Deutsch/GK" />
+                        <String fx:id="6eng" fx:value="Englisch" />
+                        <String fx:id="6wi" fx:value="Wirtschaft" />
+                        <String fx:id="6bwl" fx:value="BWL" />
+                    </FXCollections>
+                </items>
+            </ChoiceBox>
+            <ChoiceBox fx:id="secondSubjectChoiceBox2" prefWidth="150.0" GridPane.columnIndex="3" GridPane.rowIndex="1" visible="false" value=" " >
+                <items>
+                    <FXCollections fx:factory="observableArrayList">
+                        <String fx:id="its3" fx:value="ITS" />
+                        <String fx:id="labor3" fx:value="Labor" />
+                        <String fx:id="sae3" fx:value="SAE" />
+                        <String fx:id="dgk3" fx:value="Deutsch/GK" />
+                        <String fx:id="eng3" fx:value="Englisch" />
+                        <String fx:id="wi3" fx:value="Wirtschaft" />
+                        <String fx:id="bwl3" fx:value="BWL" />
+                    </FXCollections>
+                </items>
+            </ChoiceBox>
+            <ChoiceBox fx:id="secondSubjectChoiceBox3" prefWidth="150.0" GridPane.columnIndex="3" GridPane.rowIndex="2" visible="false" value=" " >
+                <items>
+                    <FXCollections fx:factory="observableArrayList">
+                        <String fx:id="its4" fx:value="ITS" />
+                        <String fx:id="labor4" fx:value="Labor" />
+                        <String fx:id="sae4" fx:value="SAE" />
+                        <String fx:id="dgk4" fx:value="Deutsch/GK" />
+                        <String fx:id="eng4" fx:value="Englisch" />
+                        <String fx:id="wi4" fx:value="Wirtschaft" />
+                        <String fx:id="bwl4" fx:value="BWL" />
+                    </FXCollections>
+                </items>
+            </ChoiceBox>
+            <ChoiceBox fx:id="secondSubjectChoiceBox4" prefWidth="150.0" GridPane.columnIndex="3" GridPane.rowIndex="3" visible="false" value=" " >
+                <items>
+                    <FXCollections fx:factory="observableArrayList">
+                        <String fx:id="its5" fx:value="ITS" />
+                        <String fx:id="labor5" fx:value="Labor" />
+                        <String fx:id="sae5" fx:value="SAE" />
+                        <String fx:id="dgk5" fx:value="Deutsch/GK" />
+                        <String fx:id="eng5" fx:value="Englisch" />
+                        <String fx:id="wi5" fx:value="Wirtschaft" />
+                        <String fx:id="bwl5" fx:value="BWL" />
+                    </FXCollections>
+                </items>
+            </ChoiceBox>
+            <ChoiceBox fx:id="secondSubjectChoiceBox5" prefWidth="150.0" GridPane.columnIndex="3" GridPane.rowIndex="4" visible="false" value=" " >
+                <items>
+                    <FXCollections fx:factory="observableArrayList">
+                        <String fx:id="its6" fx:value="ITS" />
+                        <String fx:id="labor6" fx:value="Labor" />
+                        <String fx:id="sae6" fx:value="SAE" />
+                        <String fx:id="dgk6" fx:value="Deutsch/GK" />
+                        <String fx:id="eng6" fx:value="Englisch" />
+                        <String fx:id="wi6" fx:value="Wirtschaft" />
+                        <String fx:id="bwl6" fx:value="BWL" />
+                    </FXCollections>
+                </items>
+            </ChoiceBox>
+            <ChoiceBox fx:id="secondSubjectChoiceBox6" prefWidth="150.0" GridPane.columnIndex="3" GridPane.rowIndex="5" visible="false" value=" " >
+                <items>
+                    <FXCollections fx:factory="observableArrayList">
+                        <String fx:id="its7" fx:value="ITS" />
+                        <String fx:id="labor7" fx:value="Labor" />
+                        <String fx:id="sae7" fx:value="SAE" />
+                        <String fx:id="dgk7" fx:value="Deutsch/GK" />
+                        <String fx:id="eng7" fx:value="Englisch" />
+                        <String fx:id="wi7" fx:value="Wirtschaft" />
+                        <String fx:id="bwl7" fx:value="BWL" />
+                    </FXCollections>
+                </items>
+            </ChoiceBox>
+            <ChoiceBox fx:id="secondSubjectChoiceBox7" prefWidth="150.0" GridPane.columnIndex="3" GridPane.rowIndex="6" visible="false" value=" " >
+                <items>
+                    <FXCollections fx:factory="observableArrayList">
+                        <String fx:id="its8" fx:value="ITS" />
+                        <String fx:id="labor8" fx:value="Labor" />
+                        <String fx:id="sae8" fx:value="SAE" />
+                        <String fx:id="dgk8" fx:value="Deutsch/GK" />
+                        <String fx:id="eng8" fx:value="Englisch" />
+                        <String fx:id="wi8" fx:value="Wirtschaft" />
+                        <String fx:id="bwl8" fx:value="BWL" />
+                    </FXCollections>
+                </items>
+            </ChoiceBox>
             </children>
         </GridPane>
         <Separator layoutX="298.0" layoutY="113.0" orientation="VERTICAL" prefHeight="213.0" prefWidth="5.0" />

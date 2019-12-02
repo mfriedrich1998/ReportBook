@@ -1,23 +1,19 @@
 package backend.saveinstance;
 
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.TextField;
-
+import javafx.collections.ObservableSet;
+import java.time.LocalDate;
 import java.util.Locale;
-import java.util.Map;
 
 public class SaveInstance {
 
 
     private static SaveInstance INSTANCE;
 
-    private Map<ChoiceBox, TextField> boxes;
+    private String reportBookNumber;
 
-    private int reportBookNumber;
+    private LocalDate fromDate;
 
-    private String fromDate;
-
-    private String toDate;
+    private LocalDate toDate;
 
     private String activitiesText;
 
@@ -33,6 +29,12 @@ public class SaveInstance {
 
     private Locale lang;
 
+    private ObservableSet selectedBoxes;
+
+    private String name;
+
+    private String department;
+
 
     private SaveInstance() {
     }
@@ -47,19 +49,19 @@ public class SaveInstance {
     }
 
 
-    public int getReportBookNumber() {
+    public String getReportBookNumber() {
         return reportBookNumber;
     }
 
-    public void setReportBookNumber(int reportBookNumber) {
+    public void setReportBookNumber(String reportBookNumber) {
         this.reportBookNumber = reportBookNumber;
     }
 
-    public String getFromDate() {
+    public LocalDate getFromDate() {
         return fromDate;
     }
 
-    public void setFromDate(String fromDate) {
+    public void setFromDate(LocalDate fromDate) {
         this.fromDate = fromDate;
     }
 
@@ -111,11 +113,11 @@ public class SaveInstance {
         SecondSubjectInput = secondSubjectInput;
     }
 
-    public String getToDate() {
+    public LocalDate getToDate() {
         return toDate;
     }
 
-    public void setToDate(String toDate) {
+    public void setToDate(LocalDate toDate) {
         this.toDate = toDate;
     }
 
@@ -127,12 +129,30 @@ public class SaveInstance {
         this.lang = lang;
     }
 
-    public Map<ChoiceBox, TextField> getBoxes() {
-        return boxes;
+    public ObservableSet getSelectedBoxes() {
+        return selectedBoxes;
     }
 
-    public void setBoxes(Map<ChoiceBox, TextField> boxes) {
-        this.boxes = boxes;
+    public void setSelectedBoxes(ObservableSet selectedBoxes) {
+        this.selectedBoxes = selectedBoxes;
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getDepartment() {
+        return department;
+    }
+
+    public void setDepartment(String department) {
+        this.department = department;
+    }
+
+
 }
 

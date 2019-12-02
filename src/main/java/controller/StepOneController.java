@@ -1,6 +1,7 @@
 package controller;
 
 import backend.I18N.I18N;
+import backend.PDF.PDFGenerator;
 import backend.saveinstance.SaveInstance;
 import javafx.beans.binding.Bindings;
 import javafx.beans.binding.IntegerBinding;
@@ -9,13 +10,18 @@ import javafx.collections.ObservableSet;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
+import javafx.util.Callback;
 
 import java.io.IOException;
+import java.net.URL;
+import java.time.DayOfWeek;
+import java.time.LocalDate;
 import java.util.ResourceBundle;
 
-public class StepOneController {
+public class StepOneController implements Initializable {
 
 
     private SaveInstance instance = SaveInstance.getInstance();
@@ -108,6 +114,7 @@ public class StepOneController {
 
     @FXML
     public void handleStepOneNextButtonAction(ActionEvent event) {
+        collectViewData();
         ResourceBundle bundle = ResourceBundle.getBundle("lang/lang");
         try {
             if (bookNumberTextField.getText().isEmpty()) {
@@ -117,13 +124,46 @@ public class StepOneController {
                 alert.showAndWait();
                 return;
             }
-
             if (fromDate.getValue() == null) {
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setHeaderText(I18N.get("key25"));
                 alert.contentTextProperty().bind(I18N.createStringBinding("key32"));
                 alert.showAndWait();
                 return;
+            }
+            if (vacWeek.isSelected()) {
+                instance.setActivitiesText( I18N.get("key45") +  instance.getFromDate() + I18N.get("key46") + instance.getToDate() + I18N.get("key49"));
+                instance.setInstructionsText(" ");
+                instance.setSchoolSubject("");
+                instance.setSubjectInput("");
+                instance.setSecondSchoolSubject(" ");
+                instance.setSecondSubjectInput(" ");
+
+                PDFGenerator pdfGenerator = new PDFGenerator();
+                pdfGenerator.printPDF();
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Information Dialog");
+                alert.setHeaderText("PDF Gespeichert");
+                alert.setContentText("I have a great message for you!");
+                alert.showAndWait();
+                System.exit(0);
+            }
+            if (sickWeek.isSelected()) {
+                instance.setActivitiesText( I18N.get("key45") +  instance.getFromDate() + I18N.get("key46") + instance.getToDate() + I18N.get("key48"));
+                instance.setInstructionsText(" ");
+                instance.setSchoolSubject("");
+                instance.setSubjectInput("");
+                instance.setSecondSchoolSubject(" ");
+                instance.setSecondSubjectInput(" ");
+
+                PDFGenerator pdfGenerator = new PDFGenerator();
+                pdfGenerator.printPDF();
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Information Dialog");
+                alert.setHeaderText("PDF Gespeichert");
+                alert.setContentText("I have a great message for you!");
+                alert.showAndWait();
+                System.exit(0);
             } else {
                 collectViewData();
                 I18N.getLocale();
@@ -142,11 +182,13 @@ public class StepOneController {
     public void handleStepOneBackButtonAction(ActionEvent event) {
         ResourceBundle bundle = ResourceBundle.getBundle("lang/lang");
         try {
+            collectViewData();
             pane.getChildren().setAll((AnchorPane) FXMLLoader.load(getClass().getClassLoader().getResource("views/MainMenuView.fxml"), bundle));
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
+
 
     @FXML
     private void ChooseFromDateToDate() {
@@ -155,9 +197,67 @@ public class StepOneController {
     }
 
 
+    // Factory to create Cell of DatePicker
+    private Callback<DatePicker, DateCell> getDayCellFactory() {
+
+        final Callback<DatePicker, DateCell> dayCellFactory = new Callback<DatePicker, DateCell>() {
+
+            @Override
+            public DateCell call(final DatePicker datePicker) {
+                return new DateCell() {
+                    @Override
+                    public void updateItem(LocalDate item, boolean empty) {
+                        super.updateItem(item, empty);
+
+                        if (item.getDayOfWeek() == DayOfWeek.TUESDAY //
+                                || item.getDayOfWeek() == DayOfWeek.WEDNESDAY//
+                                || item.getDayOfWeek() == DayOfWeek.THURSDAY
+                                || item.getDayOfWeek() == DayOfWeek.FRIDAY
+                                || item.getDayOfWeek() == DayOfWeek.SATURDAY
+                                || item.getDayOfWeek() == DayOfWeek.SUNDAY) {
+                            setDisable(true);
+                            //setStyle("-fx-background-color: #ffc0cb;");
+                        }
+                    }
+                };
+            }
+        };
+        return dayCellFactory;
+    }
+
+    private Callback<DatePicker, DateCell> getDayCellFactory2() {
+
+        final Callback<DatePicker, DateCell> dayCellFactory = new Callback<DatePicker, DateCell>() {
+
+            @Override
+            public DateCell call(final DatePicker datePicker) {
+                return new DateCell() {
+                    @Override
+                    public void updateItem(LocalDate item, boolean empty) {
+                        super.updateItem(item, empty);
+
+                        if (item.getDayOfWeek() == DayOfWeek.MONDAY
+                                || item.getDayOfWeek() == DayOfWeek.TUESDAY //
+                                || item.getDayOfWeek() == DayOfWeek.WEDNESDAY//
+                                || item.getDayOfWeek() == DayOfWeek.THURSDAY
+                                || item.getDayOfWeek() == DayOfWeek.FRIDAY
+                                || item.getDayOfWeek() == DayOfWeek.SATURDAY
+                                || item.getDayOfWeek() == DayOfWeek.SUNDAY) {
+                            setDisable(true);
+                            //setStyle("-fx-background-color: #ffc0cb;");
+                        }
+                    }
+                };
+            }
+        };
+        return dayCellFactory;
+    }
+
+
     private void configureCheckBox(CheckBox checkBox) {
         if (checkBox.isSelected()) {
             selectedCheckBoxes.add(checkBox);
+
         } else {
             unselectedCheckBoxes.add(checkBox);
         }
@@ -165,6 +265,7 @@ public class StepOneController {
             if (newValue) {
                 unselectedCheckBoxes.remove(checkBox);
                 selectedCheckBoxes.add(checkBox);
+
             } else {
                 selectedCheckBoxes.remove(checkBox);
                 unselectedCheckBoxes.add(checkBox);
@@ -205,6 +306,7 @@ public class StepOneController {
                 sickUnselectedCheckBoxes.add(checkBox);
             }
         }));
+
     }
 
 
@@ -224,6 +326,7 @@ public class StepOneController {
             }
         }));
 
+
     }
 
     @FXML
@@ -241,7 +344,25 @@ public class StepOneController {
                 vacUnselectedCheckBoxes.forEach(checkBox -> checkBox.setDisable(false));
             }
         }));
+
+
+        if (VacMoCheckBox.isSelected()) {
+            SickMoCheckBox.setDisable(true);
+        }
+        if (VacTueCheckBox.isSelected()) {
+            SickTueCheckBox.setDisable(true);
+        }
+        if (VacWedCheckBox.isSelected()) {
+            SickWedCheckBox.setDisable(true);
+        }
+        if (VacThuCheckBox.isSelected()) {
+            SickThuCheckBox.setDisable(true);
+        }
+        if (VacFriCheckBox.isSelected()) {
+            SickFriCheckBox.setDisable(true);
+        }
     }
+
 
     @FXML
     public void handleSickCheckBoxAction() {
@@ -258,6 +379,23 @@ public class StepOneController {
                 sickUnselectedCheckBoxes.forEach(checkBox -> checkBox.setDisable(false));
             }
         }));
+
+        if( SickMoCheckBox.isSelected()){
+            VacMoCheckBox.setDisable(true);
+        }
+        if( SickTueCheckBox.isSelected()){
+            VacTueCheckBox.setDisable(true);
+        }
+        if( SickWedCheckBox.isSelected()){
+            VacWedCheckBox.setDisable(true);
+        }
+        if( SickThuCheckBox.isSelected()){
+            VacThuCheckBox.setDisable(true);
+        }
+        if( SickFriCheckBox.isSelected()){
+            VacFriCheckBox.setDisable(true);
+        }
+
     }
 
     @FXML
@@ -266,21 +404,48 @@ public class StepOneController {
         vacWeek.setToggleGroup(group);
         sickWeek.setToggleGroup(group);
 
+
+
     }
 
 
     private void collectViewData() {
-        int bookNumber = Integer.parseInt(bookNumberTextField.getText());
-        String date = fromDate.getValue().toString();
-        String secDate = toDate.getValue().toString();
+        String bookNumber = bookNumberTextField.getText();
+        LocalDate date = fromDate.getValue();
+        LocalDate secDate = toDate.getValue();
 
+        instance.setSelectedBoxes(selectedCheckBoxes);
         instance.setReportBookNumber(bookNumber);
         instance.setFromDate(date);
         instance.setToDate(secDate);
         System.out.println("Book number is: " + instance.getReportBookNumber());
         System.out.println(instance.getFromDate());
         System.out.println(instance.getToDate());
+
     }
 
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        // Factory to create Cell of DatePicker
+        Callback<DatePicker, DateCell> dayCellFactory = this.getDayCellFactory();
+        fromDate.setDayCellFactory(dayCellFactory);
+
+        Callback<DatePicker, DateCell> dayCellFactory2 = this.getDayCellFactory2();
+        toDate.setDayCellFactory(dayCellFactory2);
+
+        if (instance.getReportBookNumber() != null) {
+            bookNumberTextField.setText(instance.getReportBookNumber());
+        }
+
+        if (instance.getFromDate() != null) {
+            fromDate.setValue(instance.getFromDate());
+        }
+
+        if (instance.getToDate() != null) {
+            toDate.setValue(instance.getToDate());
+        }
+
+    }
 
 }

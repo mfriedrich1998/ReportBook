@@ -2,9 +2,12 @@ package controller;
 
 import backend.CSVConfig.CSV;
 import backend.I18N.I18N;
+import backend.saveinstance.SaveInstance;
+import com.sun.org.apache.xml.internal.res.XMLErrorResources_tr;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
@@ -13,11 +16,14 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Window;
 
 import java.io.IOException;
+import java.net.URL;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
 
-public class ConfigController {
+public class ConfigController implements Initializable {
+
+    private SaveInstance instance = SaveInstance.getInstance();
 
     @FXML
     private AnchorPane pane;
@@ -33,6 +39,7 @@ public class ConfigController {
 
     @FXML
     private TextField departmentTextField;
+
 
     @FXML
     public void handleConfigCancelButtonAction(ActionEvent event) {
@@ -57,6 +64,7 @@ public class ConfigController {
 
     @FXML
     public void handleConfigSaveButtonAction(ActionEvent event) {
+        collectData();
         Window window = configSaveButton.getScene().getWindow();
         if (nameTextField.getText().isEmpty()) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -101,6 +109,30 @@ public class ConfigController {
         csv.save(nameTextField.getText());
         csv.save(departmentTextField.getText());
         csv.close();
+    }
+
+    private String load(String fileName) {
+        String string;
+        CSV csv = new CSV();
+        csv.open(fileName, 'l');
+        string = csv.load(fileName);
+        csv.close();
+
+        return string;
+    }
+
+    private void collectData(){
+
+        instance.setName(nameTextField.getText());
+        instance.setDepartment(departmentTextField.getText());
+        System.out.println(instance.getName());
+        System.out.println(instance.getDepartment());
+    }
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+
+
     }
 
 }

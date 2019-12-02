@@ -6,28 +6,18 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.ResourceBundle;
+import java.util.*;
+
 
 public class SchoolSubjectController implements Initializable {
 
     private SaveInstance instance = SaveInstance.getInstance();
-
-    private Map<ChoiceBox, TextField> left;
-
-    private Map<ChoiceBox, TextField> right;
-
 
     @FXML
     private AnchorPane pane;
@@ -39,7 +29,7 @@ public class SchoolSubjectController implements Initializable {
     private Button moreButton;
 
     @FXML
-    private ChoiceBox subjectChoiceBox;
+    private Button SecondMoreButton;
 
     public int choiceBoxRow = 1;
     public int choiceBoxColumn = 0;
@@ -51,20 +41,103 @@ public class SchoolSubjectController implements Initializable {
     public int secTextFieldRow = 1;
 
     @FXML
+    private ChoiceBox subjectChoiceBox;
+
+    @FXML
+    private ChoiceBox subjectChoiceBox2;
+
+    @FXML
+    private ChoiceBox subjectChoiceBox3;
+
+    @FXML
+    private ChoiceBox subjectChoiceBox4;
+
+    @FXML
+    private ChoiceBox subjectChoiceBox5;
+
+    @FXML
+    private ChoiceBox subjectChoiceBox6;
+
+    @FXML
+    private ChoiceBox subjectChoiceBox7;
+
+    @FXML
     private ChoiceBox secondSubjectChoiceBox;
 
     @FXML
-    private Button SecondMoreButton;
+    private ChoiceBox secondSubjectChoiceBox2;
+
+    @FXML
+    private ChoiceBox secondSubjectChoiceBox3;
+
+    @FXML
+    private ChoiceBox secondSubjectChoiceBox4;
+
+    @FXML
+    private ChoiceBox secondSubjectChoiceBox5;
+
+    @FXML
+    private ChoiceBox secondSubjectChoiceBox6;
+
+    @FXML
+    private ChoiceBox secondSubjectChoiceBox7;
 
     @FXML
     private TextField subjectTextField;
 
     @FXML
+    private TextField subjectTextField2;
+
+    @FXML
+    private TextField subjectTextField3;
+
+    @FXML
+    private TextField subjectTextField4;
+
+    @FXML
+    private TextField subjectTextField5;
+
+    @FXML
+    private TextField subjectTextField6;
+
+    @FXML
+    private TextField subjectTextField7;
+
+    @FXML
     private TextField secondSubjectTextField;
+
+    @FXML
+    private TextField secondSubjectTextField2;
+
+    @FXML
+    private TextField secondSubjectTextField3;
+
+    @FXML
+    private TextField secondSubjectTextField4;
+
+    @FXML
+    private TextField secondSubjectTextField5;
+
+    @FXML
+    private TextField secondSubjectTextField6;
+
+    @FXML
+    private TextField secondSubjectTextField7;
+
+    @FXML
+    private Label day1Label;
+
+    @FXML
+    private Label day2Label;
+
+    private Map<ChoiceBox, TextField> left;
+
+    private Map<ChoiceBox, TextField> right;
 
 
     @FXML
     public void handleSchoolSubjectsNextButtonAction(ActionEvent event) {
+        ResourceBundle bundle = ResourceBundle.getBundle("lang/lang");
         collectViewData();
         System.out.println(instance.getInstructionsText());
         PDFGenerator pdfGenerator = new PDFGenerator();
@@ -74,13 +147,18 @@ public class SchoolSubjectController implements Initializable {
         alert.setHeaderText("PDF Gespeichert");
         alert.setContentText("I have a great message for you!");
         alert.showAndWait();
-        System.exit(0);
+        try {
+            pane.getChildren().setAll((AnchorPane) FXMLLoader.load(getClass().getClassLoader().getResource("views/MainMenuView.fxml"), bundle));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML
     public void handleSchoolSubjectsBackButtonAction(ActionEvent event) {
         ResourceBundle bundle = ResourceBundle.getBundle("lang/lang");
         try {
+            collectViewData();
             pane.getChildren().setAll((AnchorPane) FXMLLoader.load(getClass().getClassLoader().getResource("views/InstructionsView.fxml"), bundle));
         } catch (IOException e) {
             e.printStackTrace();
@@ -88,44 +166,100 @@ public class SchoolSubjectController implements Initializable {
     }
 
     @FXML
-    public void handleMoreButtonAction(ActionEvent event) {
-        left = new HashMap<>();
-        TextField textField = new TextField();
-        ChoiceBox choiceBox = new ChoiceBox();
-        choiceBox.setValue("ITS");
-        choiceBox.setItems(subjectChoiceBox.getItems());
-        gridPane.add(textField, textFieldColumn, textFieldRow);
-        gridPane.add(choiceBox, choiceBoxColumn, choiceBoxRow);
-        if (choiceBoxRow < 6) {
-            choiceBoxRow++;
+    public void handleMoreButtonAction() {
+        int i = 2;
+        for (Map.Entry<ChoiceBox, TextField> entry : left.entrySet()) {
+            if (entry.getKey().getId().equals("" + i)) {
+                ChoiceBox cb = entry.getKey();
+                if (!cb.visibleProperty().getValue()) {
+                    entry.getKey().visibleProperty().setValue(true);
+                    entry.getValue().visibleProperty().setValue(true);
+                    return;
+                }
+                i++;
+            }
         }
-        if (textFieldRow < 6) {
-            textFieldRow++;
-        } else {
-            moreButton.setDisable(true);
+    }
+
+    @FXML
+    public void handleDeleteButtonAction() {
+        LinkedList<ChoiceBox> reversedLinkedListFromLinkedHashSetKey = new LinkedList<>(left.keySet());
+        LinkedList<TextField> reversedLinkedListFromLinkedHashSetValue = new LinkedList<>(left.values());
+        for (int i = reversedLinkedListFromLinkedHashSetKey.size() - 1; i >= 0; i--) {
+            ChoiceBox cb = reversedLinkedListFromLinkedHashSetKey.get(i);
+            TextField tf = reversedLinkedListFromLinkedHashSetValue.get(i);
+            if (cb.visibleProperty().getValue()) {
+                cb.visibleProperty().setValue(false);
+                tf.visibleProperty().setValue(false);
+                return;
+            }
         }
-        left.put(choiceBox,textField);
+    }
+
+    private void configureSchoolSubjects() {
+        left = new LinkedHashMap<>();
+        subjectChoiceBox2.setId("2");
+        subjectChoiceBox3.setId("3");
+        subjectChoiceBox4.setId("4");
+        subjectChoiceBox5.setId("5");
+        subjectChoiceBox6.setId("6");
+        subjectChoiceBox7.setId("7");
+        left.put(subjectChoiceBox2, subjectTextField2);
+        left.put(subjectChoiceBox3, subjectTextField3);
+        left.put(subjectChoiceBox4, subjectTextField4);
+        left.put(subjectChoiceBox5, subjectTextField5);
+        left.put(subjectChoiceBox6, subjectTextField6);
+        left.put(subjectChoiceBox7, subjectTextField7);
     }
 
 
     @FXML
     public void handleSecondMoreButtonAction(ActionEvent e) {
-        right = new HashMap<>();
-        TextField textField = new TextField();
-        ChoiceBox choiceBox = new ChoiceBox();
-        choiceBox.setValue("ITS");
-        choiceBox.setItems(secondSubjectChoiceBox.getItems());
-        gridPane.add(textField, secTextFieldColumn, secTextFieldRow);
-        gridPane.add(choiceBox, secChoiceBoxColumn, secChoiceBoxRow);
-        if (secChoiceBoxRow < 6) {
-            secChoiceBoxRow++;
+        int i = 2;
+        for (Map.Entry<ChoiceBox, TextField> entry : right.entrySet()) {
+            if (entry.getKey().getId().equals("" + i)) {
+                ChoiceBox cb = entry.getKey();
+                if (!cb.visibleProperty().getValue()) {
+                    entry.getKey().visibleProperty().setValue(true);
+                    entry.getValue().visibleProperty().setValue(true);
+                    return;
+                }
+                i++;
+            }
         }
-        if (secTextFieldRow < 6) {
-            secTextFieldRow++;
-        } else {
-            SecondMoreButton.setDisable(true);
+
+
+    }
+
+    @FXML
+    public void handleSecondDeleteButtonAction() {
+        LinkedList<ChoiceBox> reversedLinkedListFromLinkedHashSetKey = new LinkedList<>(right.keySet());
+        LinkedList<TextField> reversedLinkedListFromLinkedHashSetValue = new LinkedList<>(right.values());
+        for (int i = reversedLinkedListFromLinkedHashSetKey.size() - 1; i >= 0; i--) {
+            ChoiceBox cb = reversedLinkedListFromLinkedHashSetKey.get(i);
+            TextField tf = reversedLinkedListFromLinkedHashSetValue.get(i);
+            if (cb.visibleProperty().getValue()) {
+                cb.visibleProperty().setValue(false);
+                tf.visibleProperty().setValue(false);
+                return;
+            }
         }
-        right.put(choiceBox,textField);
+    }
+
+    private void configureSecondSchoolSubjects() {
+        right = new LinkedHashMap<>();
+        secondSubjectChoiceBox2.setId("2");
+        secondSubjectChoiceBox3.setId("3");
+        secondSubjectChoiceBox4.setId("4");
+        secondSubjectChoiceBox5.setId("5");
+        secondSubjectChoiceBox6.setId("6");
+        secondSubjectChoiceBox7.setId("7");
+        right.put(secondSubjectChoiceBox2, secondSubjectTextField2);
+        right.put(secondSubjectChoiceBox3, secondSubjectTextField3);
+        right.put(secondSubjectChoiceBox4, secondSubjectTextField4);
+        right.put(secondSubjectChoiceBox5, secondSubjectTextField5);
+        right.put(secondSubjectChoiceBox6, secondSubjectTextField6);
+        right.put(secondSubjectChoiceBox7, secondSubjectTextField7);
 
     }
 
@@ -138,6 +272,7 @@ public class SchoolSubjectController implements Initializable {
         String secondSubject = secondSubjectChoiceBox.getValue().toString();
         String secondInput = secondSubjectTextField.getText();
 
+
         instance.setSchoolSubject(subject);
         instance.setSubjectInput(input);
         instance.setSecondSchoolSubject(secondSubject);
@@ -146,12 +281,45 @@ public class SchoolSubjectController implements Initializable {
         System.out.println(instance.getSubjectInput());
         System.out.println(instance.getSecondSchoolSubject());
         System.out.println(instance.getSecondSubjectInput());
-        System.out.println(instance.getBoxes());
+
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        if (instance.getSubjectInput() != null) {
+            subjectTextField.setText(instance.getSubjectInput());
+        }
+        if (instance.getSecondSubjectInput() != null) {
+            secondSubjectTextField.setText(instance.getSecondSubjectInput());
+        }
+        if (instance.getSchoolSubject() != null) {
+            subjectChoiceBox.setValue(instance.getSchoolSubject());
+        }
+        if (instance.getSecondSchoolSubject() != null) {
+            secondSubjectChoiceBox.setValue(instance.getSecondSchoolSubject());
+        }
 
+
+        if (instance.getSelectedBoxes().isEmpty()) {
+            SecondMoreButton.setDisable(true);
+            secondSubjectTextField.setDisable(true);
+            secondSubjectChoiceBox.setDisable(true);
+            subjectTextField.setDisable(true);
+            subjectChoiceBox.setDisable(true);
+            moreButton.setDisable(true);
+            day1Label.setText(" ");
+            day2Label.setText(" ");
+
+        }
+
+        if (instance.getSelectedBoxes().size() == 1) {
+            SecondMoreButton.setDisable(true);
+            secondSubjectTextField.setDisable(true);
+            secondSubjectChoiceBox.setDisable(true);
+            day2Label.setText(" ");
+        }
+        configureSchoolSubjects();
+        configureSecondSchoolSubjects();
     }
 }
 

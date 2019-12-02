@@ -23,4 +23,3 @@ public class MainView extends Application {
         launch(args);
     }
 }
-

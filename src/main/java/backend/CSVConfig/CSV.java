@@ -42,6 +42,7 @@ public class CSV {
 
     public String load(String fileName) {
         String loadedString = "";
+        StringBuilder stringBuilder = new StringBuilder();
 
 
         try {
@@ -49,17 +50,23 @@ public class CSV {
             bufferedReader = new BufferedReader(fileReader);
 
             while ((loadedString = bufferedReader.readLine()) != null) {
-                String[] attribute = loadedString.split(",");
+                String[] personsAttribute = loadedString.split("\n");
+                String name = personsAttribute[0];
+                String department = personsAttribute[1];
 
+                stringBuilder.append(name);
+                stringBuilder.append("\n");
+                stringBuilder.append(department);
 
             }
-        } catch (IOException e) {
+
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
-        return "";
-
+        return stringBuilder.toString();
     }
+
 
     public void close() {
         if (fileReader != null) {

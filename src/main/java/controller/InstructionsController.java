@@ -6,14 +6,16 @@ import backend.saveinstance.SaveInstance;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.control.TextArea;
 import javafx.scene.layout.AnchorPane;
 
 import java.io.IOException;
+import java.net.URL;
 import java.util.ResourceBundle;
 
 
-public class InstructionsController {
+public class InstructionsController implements Initializable {
 
     private SaveInstance instance = SaveInstance.getInstance();
 
@@ -44,6 +46,7 @@ public class InstructionsController {
         InstructionsTextArea.setText(instance.getInstructionsText());
         ResourceBundle bundle = ResourceBundle.getBundle("lang/lang");
         try {
+            collectViewData();
             pane.getChildren().setAll((AnchorPane) FXMLLoader.load(getClass().getClassLoader().getResource("views/ProfessionalActivitiesView.fxml"), bundle));
 
         } catch (IOException e) {
@@ -59,6 +62,12 @@ public class InstructionsController {
     }
 
 
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        if (instance.getInstructionsText() != null) {
+            InstructionsTextArea.setText(instance.getInstructionsText());
+        }
+    }
 }
 
 

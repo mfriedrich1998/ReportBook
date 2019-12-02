@@ -41,14 +41,14 @@ public final class I18N {
         return locale;
     }
 
-    public static String get(final String key, final Object... args){
+    public static String get(final String key, final Object... args) {
         ResourceBundle bundle = ResourceBundle.getBundle("lang/lang", getLocale());
         return MessageFormat.format(bundle.getString(key), args);
 
     }
 
-    public static StringBinding createStringBinding(final String key, Object... args){
-        return Bindings.createStringBinding(() ->get(key, args), locale);
+    public static StringBinding createStringBinding(final String key, Object... args) {
+        return Bindings.createStringBinding(() -> get(key, args), locale);
 
     }
 

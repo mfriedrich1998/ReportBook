@@ -8,6 +8,7 @@ import net.sf.jasperreports.engine.util.JRSaver;
 
 import java.io.InputStream;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
@@ -18,9 +19,9 @@ public class PDFGenerator {
 
     private SaveInstance instance = SaveInstance.getInstance();
 
-    String firstDate = instance.getFromDate();
+    LocalDate firstDate = instance.getFromDate();
 
-    String toDate = instance.getToDate();
+    LocalDate toDate = instance.getToDate();
 
     String subject = instance.getSchoolSubject();
 
@@ -30,7 +31,7 @@ public class PDFGenerator {
 
     String secSchoolinput = instance.getSecondSubjectInput();
 
-    int number = instance.getReportBookNumber();
+    String number = instance.getReportBookNumber();
 
     String activities = instance.getActivitiesText();
 
@@ -57,7 +58,6 @@ public class PDFGenerator {
     String to = I18N.get("key46");
 
 
-
     public static void main(String[] args) {
 
         PDFGenerator reader = new PDFGenerator();
@@ -78,21 +78,21 @@ public class PDFGenerator {
             JasperReport jasperReport = JasperCompileManager.compileReport(resource);
 
             Map<String, Object> params = new HashMap<String, Object>();
-            params.put("RB_NUMBER", rbNumber + " " + number );
+            params.put("RB_NUMBER", rbNumber + " " + number);
             params.put("DEPARTMENT", department);
-            params.put("DEPARTMENT_NAME", "SustainHub");
+            params.put("DEPARTMENT_NAME", "");
             params.put("TRAINEES_NAME", name);
-            params.put("NAME", "Michelle Friedrich");
+            params.put("NAME", "");
             params.put("SIGNATURE_TRAINEE", traineeSignature);
             params.put("SIGNATURE_MENTOR", mentorSignature);
             params.put("SCHOOL_SUBJECTS", schoolSubjects);
-            params.put("DAY_1", subject + " " + schoolinput);
+            params.put("DAY_1", subject + " " + schoolinput + "\n" );
             params.put("DAY_2", secSubject + " " + secSchoolinput);
             params.put("ACTIVITIES", activities);
             params.put("PROFESSIONAL_ACTIVITIES", profActivities);
             params.put("INSTRUCTIONS_HEADER", instruction);
             params.put("INSTRUCTIONS", instructions);
-            params.put("FROM_TODATE", from +  firstDate + " " + to + toDate);
+            params.put("FROM_TODATE", from + firstDate + " " + to + toDate);
 
             InputStream subreport1 = PDFGenerator.class.getResourceAsStream("../../reports/ProfActivities.jrxml");
 
