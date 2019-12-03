@@ -8,7 +8,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.GridPane;
 
 import java.io.IOException;
 import java.net.URL;
@@ -23,22 +22,10 @@ public class SchoolSubjectController implements Initializable {
     private AnchorPane pane;
 
     @FXML
-    private GridPane gridPane;
-
-    @FXML
     private Button moreButton;
 
     @FXML
     private Button SecondMoreButton;
-
-    public int choiceBoxRow = 1;
-    public int choiceBoxColumn = 0;
-    public int textFieldRow = 1;
-    public int textFieldColumn = 1;
-    public int secChoiceBoxColumn = 3;
-    public int secTextFieldColumn = 4;
-    public int secChoiceBoxRow = 1;
-    public int secTextFieldRow = 1;
 
     @FXML
     private ChoiceBox subjectChoiceBox;
@@ -129,6 +116,12 @@ public class SchoolSubjectController implements Initializable {
 
     @FXML
     private Label day2Label;
+
+    @FXML
+    private Button deleteButton;
+
+    @FXML
+    private Button secDeleteButton;
 
     private Map<ChoiceBox, TextField> left;
 
@@ -272,16 +265,38 @@ public class SchoolSubjectController implements Initializable {
         String secondSubject = secondSubjectChoiceBox.getValue().toString();
         String secondInput = secondSubjectTextField.getText();
 
+        collectSubjectData();
+
 
         instance.setSchoolSubject(subject);
         instance.setSubjectInput(input);
         instance.setSecondSchoolSubject(secondSubject);
         instance.setSecondSubjectInput(secondInput);
-        System.out.println(instance.getSchoolSubject());
-        System.out.println(instance.getSubjectInput());
-        System.out.println(instance.getSecondSchoolSubject());
-        System.out.println(instance.getSecondSubjectInput());
+        collectSubjectData();
+        collectSecondSubjectData();
 
+    }
+
+    private void collectSubjectData() {
+        LinkedHashMap<String, String> map = new LinkedHashMap<>();
+        for (Map.Entry<ChoiceBox, TextField> entry : left.entrySet()) {
+            map.put(entry.getKey().getValue().toString(), entry.getValue().getText());
+            for (Map.Entry<String, String> entry1 : map.entrySet()) {
+                System.out.println(entry1.getKey() + " " + entry1.getValue());
+            }
+        }
+        instance.setLeftSubjects(map);
+    }
+
+    private void collectSecondSubjectData() {
+        LinkedHashMap<String, String> map = new LinkedHashMap<>();
+        for (Map.Entry<ChoiceBox, TextField> entry : right.entrySet()) {
+            map.put(entry.getKey().getValue().toString(), entry.getValue().getText());
+            for (Map.Entry<String, String> entry1 : map.entrySet()) {
+                System.out.println(entry1.getKey() + " " + entry1.getValue());
+            }
+        }
+        instance.setRightSubjects(map);
     }
 
     @Override
@@ -307,6 +322,8 @@ public class SchoolSubjectController implements Initializable {
             subjectTextField.setDisable(true);
             subjectChoiceBox.setDisable(true);
             moreButton.setDisable(true);
+            deleteButton.setDisable(true);
+            secDeleteButton.setDisable(true);
             day1Label.setText(" ");
             day2Label.setText(" ");
 
@@ -316,6 +333,7 @@ public class SchoolSubjectController implements Initializable {
             SecondMoreButton.setDisable(true);
             secondSubjectTextField.setDisable(true);
             secondSubjectChoiceBox.setDisable(true);
+            secDeleteButton.setDisable(true);
             day2Label.setText(" ");
         }
         configureSchoolSubjects();

@@ -3,7 +3,6 @@ package controller;
 import backend.CSVConfig.CSV;
 import backend.I18N.I18N;
 import backend.saveinstance.SaveInstance;
-import com.sun.org.apache.xml.internal.res.XMLErrorResources_tr;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -24,6 +23,8 @@ import java.util.ResourceBundle;
 public class ConfigController implements Initializable {
 
     private SaveInstance instance = SaveInstance.getInstance();
+
+    private SaveInstance si = SaveInstance.getInstance();
 
     @FXML
     private AnchorPane pane;
@@ -112,16 +113,12 @@ public class ConfigController implements Initializable {
     }
 
     private void collectData(){
-
         instance.setName(nameTextField.getText());
         instance.setDepartment(departmentTextField.getText());
-        System.out.println(instance.getName());
-        System.out.println(instance.getDepartment());
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        SaveInstance si = SaveInstance.getInstance();
         if (si.loadConfigurationIfExisting("config")) {
             nameTextField.setText(si.getName());
             departmentTextField.setText(si.getDepartment());

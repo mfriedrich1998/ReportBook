@@ -132,7 +132,7 @@ public class StepOneController implements Initializable {
                 return;
             }
             if (vacWeek.isSelected()) {
-                instance.setActivitiesText( I18N.get("key45") +  instance.getFromDate() + I18N.get("key46") + instance.getToDate() + I18N.get("key49"));
+                instance.setActivitiesText(I18N.get("key45") + instance.getFromDate() + I18N.get("key46") + instance.getToDate() + I18N.get("key49"));
                 instance.setInstructionsText(" ");
                 instance.setSchoolSubject("");
                 instance.setSubjectInput("");
@@ -149,7 +149,7 @@ public class StepOneController implements Initializable {
                 System.exit(0);
             }
             if (sickWeek.isSelected()) {
-                instance.setActivitiesText( I18N.get("key45") +  instance.getFromDate() + I18N.get("key46") + instance.getToDate() + I18N.get("key48"));
+                instance.setActivitiesText(I18N.get("key45") + instance.getFromDate() + I18N.get("key46") + instance.getToDate() + I18N.get("key48"));
                 instance.setInstructionsText(" ");
                 instance.setSchoolSubject("");
                 instance.setSubjectInput("");
@@ -307,6 +307,8 @@ public class StepOneController implements Initializable {
             }
         }));
 
+
+
     }
 
 
@@ -345,22 +347,22 @@ public class StepOneController implements Initializable {
             }
         }));
 
+        if(VacMoCheckBox.isSelected()){
+            instance.setActivitiesText(I18N.get("key50"));
+        }
+        if(VacTueCheckBox.isSelected()){
+            instance.setActivitiesText(I18N.get("key51"));
+        }
+        if(VacWedCheckBox.isSelected()){
+            instance.setActivitiesText(I18N.get("key52"));
+        }
+        if(VacThuCheckBox.isSelected()){
+            instance.setActivitiesText(I18N.get("key53"));
+        }
+        if(VacFriCheckBox.isSelected()){
+            instance.setActivitiesText(I18N.get("key54"));
+        }
 
-        if (VacMoCheckBox.isSelected()) {
-            SickMoCheckBox.setDisable(true);
-        }
-        if (VacTueCheckBox.isSelected()) {
-            SickTueCheckBox.setDisable(true);
-        }
-        if (VacWedCheckBox.isSelected()) {
-            SickWedCheckBox.setDisable(true);
-        }
-        if (VacThuCheckBox.isSelected()) {
-            SickThuCheckBox.setDisable(true);
-        }
-        if (VacFriCheckBox.isSelected()) {
-            SickFriCheckBox.setDisable(true);
-        }
     }
 
 
@@ -380,22 +382,21 @@ public class StepOneController implements Initializable {
             }
         }));
 
-        if( SickMoCheckBox.isSelected()){
-            VacMoCheckBox.setDisable(true);
+        if(SickMoCheckBox.isSelected()){
+            instance.setActivitiesText(I18N.get("key55"));
         }
-        if( SickTueCheckBox.isSelected()){
-            VacTueCheckBox.setDisable(true);
+        if(SickTueCheckBox.isSelected()){
+            instance.setActivitiesText(I18N.get("key56"));
         }
-        if( SickWedCheckBox.isSelected()){
-            VacWedCheckBox.setDisable(true);
+        if(SickWedCheckBox.isSelected()){
+            instance.setActivitiesText(I18N.get("key57"));
         }
-        if( SickThuCheckBox.isSelected()){
-            VacThuCheckBox.setDisable(true);
+        if(SickThuCheckBox.isSelected()){
+            instance.setActivitiesText(I18N.get("key58"));
         }
-        if( SickFriCheckBox.isSelected()){
-            VacFriCheckBox.setDisable(true);
+        if(SickFriCheckBox.isSelected()){
+            instance.setActivitiesText(I18N.get("key59"));
         }
-
     }
 
     @FXML
@@ -405,8 +406,8 @@ public class StepOneController implements Initializable {
         sickWeek.setToggleGroup(group);
 
 
-
     }
+
 
 
     private void collectViewData() {
@@ -414,14 +415,11 @@ public class StepOneController implements Initializable {
         LocalDate date = fromDate.getValue();
         LocalDate secDate = toDate.getValue();
 
+
         instance.setSelectedBoxes(selectedCheckBoxes);
         instance.setReportBookNumber(bookNumber);
         instance.setFromDate(date);
         instance.setToDate(secDate);
-        System.out.println("Book number is: " + instance.getReportBookNumber());
-        System.out.println(instance.getFromDate());
-        System.out.println(instance.getToDate());
-
     }
 
 
@@ -446,6 +444,11 @@ public class StepOneController implements Initializable {
             toDate.setValue(instance.getToDate());
         }
 
-    }
+        if (instance.loadConfigurationIfExisting("config")) {
+            instance.getName();
+            instance.getDepartment();
 
+        }
+
+    }
 }

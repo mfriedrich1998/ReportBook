@@ -4,6 +4,7 @@ import backend.CSVConfig.CSV;
 import javafx.collections.ObservableSet;
 import java.time.LocalDate;
 import java.util.Locale;
+import java.util.Map;
 
 public class SaveInstance {
 
@@ -35,6 +36,20 @@ public class SaveInstance {
     private String name;
 
     private String department;
+
+    private Map<String, String> leftSubjects;
+
+    private Map<String, String> rightSubjects;
+
+    private String mondaySickOrVac;
+
+    private String tuesdaySickOrVac;
+
+    private String wednesdaySickOrVac;
+
+    private String thursdaySickOrVac;
+
+    private String fridaySickOrVac;
 
 
     private SaveInstance() {
@@ -168,6 +183,25 @@ public class SaveInstance {
         this.department = department;
     }
 
+    public Map<String, String> getLeftSubjects() {
+        return leftSubjects;
+    }
+
+    public void setLeftSubjects(Map<String, String> leftSubjects) {
+        this.leftSubjects = leftSubjects;
+    }
+
+    public Map<String, String> getRightSubjects() {
+        return rightSubjects;
+    }
+
+    public void setRightSubjects(Map<String, String> rightSubjects) {
+        this.rightSubjects = rightSubjects;
+    }
+
+    public String getMondaySickOrVac() {
+        return mondaySickOrVac;
+    }
 
 }
 

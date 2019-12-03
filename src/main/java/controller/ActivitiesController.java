@@ -64,15 +64,15 @@ public class ActivitiesController implements Initializable {
 
     private void collectViewData() {
         String text = ProfessionalActivitiesTextArea.getText();
-
         instance.setActivitiesText(text);
-        System.out.println(instance.getActivitiesText());
+
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        if (instance.getActivitiesText() != null) {
+       if (instance.getActivitiesText() != null) {
             ProfessionalActivitiesTextArea.setText(instance.getActivitiesText());
         }
+
     }
 }

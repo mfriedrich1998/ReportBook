@@ -58,7 +58,7 @@ public class InstructionsController implements Initializable {
         String text = InstructionsTextArea.getText();
 
         instance.setInstructionsText(text);
-        System.out.println(instance.getInstructionsText());
+
     }
 
 

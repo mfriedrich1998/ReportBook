@@ -13,6 +13,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 
 public class PDFGenerator {
@@ -69,6 +70,11 @@ public class PDFGenerator {
 
         InputStream resource = PDFGenerator.class.getResourceAsStream("../../reports/Report.jrxml");
 
+
+        String subjectString = instance.getLeftSubjects().entrySet().stream().map(e -> e.getKey() + "\t" + e.getValue()).collect(Collectors.joining("\n"));
+
+        String secondSubjectString = instance.getRightSubjects().entrySet().stream().map(e -> e.getKey() + "\t" + e.getValue()).collect(Collectors.joining("\n"));
+
         System.out.println("Compiling Report Design ...");
         try {
             /**
@@ -80,14 +86,14 @@ public class PDFGenerator {
             Map<String, Object> params = new HashMap<String, Object>();
             params.put("RB_NUMBER", rbNumber + " " + number);
             params.put("DEPARTMENT", department);
-            params.put("DEPARTMENT_NAME", "");
+            params.put("DEPARTMENT_NAME", instance.getName());
             params.put("TRAINEES_NAME", name);
-            params.put("NAME", "");
+            params.put("NAME", instance.getDepartment());
             params.put("SIGNATURE_TRAINEE", traineeSignature);
             params.put("SIGNATURE_MENTOR", mentorSignature);
             params.put("SCHOOL_SUBJECTS", schoolSubjects);
-            params.put("DAY_1", subject + " " + schoolinput + "\n" );
-            params.put("DAY_2", secSubject + " " + secSchoolinput);
+            params.put("DAY_1", subject + " " + schoolinput + "\n" + subjectString);
+            params.put("DAY_2", secSubject + " " + secSchoolinput + "\n" + secondSubjectString);
             params.put("ACTIVITIES", activities);
             params.put("PROFESSIONAL_ACTIVITIES", profActivities);
             params.put("INSTRUCTIONS_HEADER", instruction);
