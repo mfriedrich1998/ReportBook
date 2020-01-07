@@ -41,16 +41,6 @@ public class SaveInstance {
 
     private Map<String, String> rightSubjects;
 
-    private String mondaySickOrVac;
-
-    private String tuesdaySickOrVac;
-
-    private String wednesdaySickOrVac;
-
-    private String thursdaySickOrVac;
-
-    private String fridaySickOrVac;
-
 
     private SaveInstance() {
     }
@@ -199,9 +189,7 @@ public class SaveInstance {
         this.rightSubjects = rightSubjects;
     }
 
-    public String getMondaySickOrVac() {
-        return mondaySickOrVac;
-    }
+
 
 }
 

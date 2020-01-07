@@ -71,9 +71,9 @@ public class PDFGenerator {
         InputStream resource = PDFGenerator.class.getResourceAsStream("../../reports/Report.jrxml");
 
 
-        String subjectString = instance.getLeftSubjects().entrySet().stream().map(e -> e.getKey() + "\t" + e.getValue()).collect(Collectors.joining("\n"));
+        String subjectString = instance.getLeftSubjects().entrySet().stream().map(e -> e.getKey() + " " + e.getValue()).collect(Collectors.joining("\n"));
 
-        String secondSubjectString = instance.getRightSubjects().entrySet().stream().map(e -> e.getKey() + "\t" + e.getValue()).collect(Collectors.joining("\n"));
+        String secondSubjectString = instance.getRightSubjects().entrySet().stream().map(e -> e.getKey() + " " + e.getValue()).collect(Collectors.joining("\n"));
 
         System.out.println("Compiling Report Design ...");
         try {

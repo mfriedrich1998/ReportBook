@@ -13,7 +13,6 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.*;
 
-
 public class SchoolSubjectController implements Initializable {
 
     private SaveInstance instance = SaveInstance.getInstance();
@@ -340,4 +339,3 @@ public class SchoolSubjectController implements Initializable {
         configureSecondSchoolSubjects();
     }
 }
-
