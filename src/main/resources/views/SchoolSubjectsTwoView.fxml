@@ -69,6 +69,15 @@
                             <String fx:id="eng" fx:value="Englisch"/>
                             <String fx:id="wi" fx:value="Wirtschaft"/>
                             <String fx:id="bwl" fx:value="BWL"/>
+                            <String fx:id="rel" fx:value="Religion"/>
+                            <String fx:id="iv2" fx:value="IV2"/>
+                            <String fx:id="ebfbw" fx:value="EBF-BW"/>
+                            <String fx:id="IV1" fx:value="IV1"/>
+                            <String fx:id="Gw" fx:value="Gesamtwirtschaft"/>
+                            <String fx:id="ebfe" fx:value="EBF-E"/>
+                            <String fx:id="bw2" fx:value="BW2"/>
+                            <String fx:id="bw1" fx:value="BW1"/>
+                            <String fx:id="sk" fx:value="Steuerung und Kontrolle"/>
                         </FXCollections>
                     </items>
                 </ChoiceBox>
@@ -86,6 +95,15 @@
                             <String fx:id="eng2" fx:value="Englisch"/>
                             <String fx:id="wi2" fx:value="Wirtschaft"/>
                             <String fx:id="bwl2" fx:value="BWL"/>
+                            <String fx:id="1rel" fx:value="Religion"/>
+                            <String fx:id="1iv2" fx:value="IV2"/>
+                            <String fx:id="1ebfbw" fx:value="EBF-BW"/>
+                            <String fx:id="1IV1" fx:value="IV1"/>
+                            <String fx:id="1Gw" fx:value="Gesamtwirtschaft"/>
+                            <String fx:id="1ebfe" fx:value="EBF-E"/>
+                            <String fx:id="1bw2" fx:value="BW2"/>
+                            <String fx:id="1bw1" fx:value="BW1"/>
+                            <String fx:id="1sk" fx:value="Steuerung und Kontrolle"/>
                         </FXCollections>
                     </items>
                 </ChoiceBox>
@@ -107,6 +125,15 @@
                             <String fx:id="1eng" fx:value="Englisch"/>
                             <String fx:id="1wi" fx:value="Wirtschaft"/>
                             <String fx:id="1bwl" fx:value="BWL"/>
+                            <String fx:id="2rel" fx:value="Religion"/>
+                            <String fx:id="2iv2" fx:value="IV2"/>
+                            <String fx:id="2ebfbw" fx:value="EBF-BW"/>
+                            <String fx:id="2IV1" fx:value="IV1"/>
+                            <String fx:id="2Gw" fx:value="Gesamtwirtschaft"/>
+                            <String fx:id="2ebfe" fx:value="EBF-E"/>
+                            <String fx:id="2bw2" fx:value="BW2"/>
+                            <String fx:id="2bw1" fx:value="BW1"/>
+                            <String fx:id="2sk" fx:value="Steuerung und Kontrolle"/>
                         </FXCollections>
                     </items>
                 </ChoiceBox>
@@ -120,6 +147,15 @@
                             <String fx:id="2eng" fx:value="Englisch"/>
                             <String fx:id="2wi" fx:value="Wirtschaft"/>
                             <String fx:id="2bwl" fx:value="BWL"/>
+                            <String fx:id="3rel" fx:value="Religion"/>
+                            <String fx:id="3iv2" fx:value="IV2"/>
+                            <String fx:id="3ebfbw" fx:value="EBF-BW"/>
+                            <String fx:id="3IV1" fx:value="IV1"/>
+                            <String fx:id="3Gw" fx:value="Gesamtwirtschaft"/>
+                            <String fx:id="3ebfe" fx:value="EBF-E"/>
+                            <String fx:id="3bw2" fx:value="BW2"/>
+                            <String fx:id="3bw1" fx:value="BW1"/>
+                            <String fx:id="3sk" fx:value="Steuerung und Kontrolle"/>
                         </FXCollections>
                     </items>
                 </ChoiceBox>
@@ -133,6 +169,15 @@
                             <String fx:id="3eng" fx:value="Englisch"/>
                             <String fx:id="3wi" fx:value="Wirtschaft"/>
                             <String fx:id="3bwl" fx:value="BWL"/>
+                            <String fx:id="4rel" fx:value="Religion"/>
+                            <String fx:id="4iv2" fx:value="IV2"/>
+                            <String fx:id="4ebfbw" fx:value="EBF-BW"/>
+                            <String fx:id="4IV1" fx:value="IV1"/>
+                            <String fx:id="4Gw" fx:value="Gesamtwirtschaft"/>
+                            <String fx:id="4ebfe" fx:value="EBF-E"/>
+                            <String fx:id="4bw2" fx:value="BW2"/>
+                            <String fx:id="4bw1" fx:value="BW1"/>
+                            <String fx:id="4sk" fx:value="Steuerung und Kontrolle"/>
                         </FXCollections>
                     </items>
                 </ChoiceBox>
@@ -146,6 +191,15 @@
                             <String fx:id="4eng" fx:value="Englisch"/>
                             <String fx:id="4wi" fx:value="Wirtschaft"/>
                             <String fx:id="4bwl" fx:value="BWL"/>
+                            <String fx:id="5rel" fx:value="Religion"/>
+                            <String fx:id="5iv2" fx:value="IV2"/>
+                            <String fx:id="5ebfbw" fx:value="EBF-BW"/>
+                            <String fx:id="5IV1" fx:value="IV1"/>
+                            <String fx:id="5Gw" fx:value="Gesamtwirtschaft"/>
+                            <String fx:id="5ebfe" fx:value="EBF-E"/>
+                            <String fx:id="5bw2" fx:value="BW2"/>
+                            <String fx:id="5bw1" fx:value="BW1"/>
+                            <String fx:id="5sk" fx:value="Steuerung und Kontrolle"/>
                         </FXCollections>
                     </items>
                 </ChoiceBox>
@@ -159,6 +213,15 @@
                             <String fx:id="5eng" fx:value="Englisch"/>
                             <String fx:id="5wi" fx:value="Wirtschaft"/>
                             <String fx:id="5bwl" fx:value="BWL"/>
+                            <String fx:id="6rel" fx:value="Religion"/>
+                            <String fx:id="6iv2" fx:value="IV2"/>
+                            <String fx:id="6ebfbw" fx:value="EBF-BW"/>
+                            <String fx:id="6IV1" fx:value="IV1"/>
+                            <String fx:id="6Gw" fx:value="Gesamtwirtschaft"/>
+                            <String fx:id="6ebfe" fx:value="EBF-E"/>
+                            <String fx:id="6bw2" fx:value="BW2"/>
+                            <String fx:id="6bw1" fx:value="BW1"/>
+                            <String fx:id="6sk" fx:value="Steuerung und Kontrolle"/>
                         </FXCollections>
                     </items>
                 </ChoiceBox>
@@ -190,6 +253,15 @@
                             <String fx:id="6eng" fx:value="Englisch"/>
                             <String fx:id="6wi" fx:value="Wirtschaft"/>
                             <String fx:id="6bwl" fx:value="BWL"/>
+                            <String fx:id="7rel" fx:value="Religion"/>
+                            <String fx:id="7iv2" fx:value="IV2"/>
+                            <String fx:id="7ebfbw" fx:value="EBF-BW"/>
+                            <String fx:id="7IV1" fx:value="IV1"/>
+                            <String fx:id="7Gw" fx:value="Gesamtwirtschaft"/>
+                            <String fx:id="7ebfe" fx:value="EBF-E"/>
+                            <String fx:id="7bw2" fx:value="BW2"/>
+                            <String fx:id="7bw1" fx:value="BW1"/>
+                            <String fx:id="7sk" fx:value="Steuerung und Kontrolle"/>
                         </FXCollections>
                     </items>
                 </ChoiceBox>
@@ -204,6 +276,15 @@
                             <String fx:id="eng3" fx:value="Englisch"/>
                             <String fx:id="wi3" fx:value="Wirtschaft"/>
                             <String fx:id="bwl3" fx:value="BWL"/>
+                            <String fx:id="8rel" fx:value="Religion"/>
+                            <String fx:id="8iv2" fx:value="IV2"/>
+                            <String fx:id="8ebfbw" fx:value="EBF-BW"/>
+                            <String fx:id="8IV1" fx:value="IV1"/>
+                            <String fx:id="8Gw" fx:value="Gesamtwirtschaft"/>
+                            <String fx:id="8ebfe" fx:value="EBF-E"/>
+                            <String fx:id="8bw2" fx:value="BW2"/>
+                            <String fx:id="8bw1" fx:value="BW1"/>
+                            <String fx:id="8sk" fx:value="Steuerung und Kontrolle"/>
                         </FXCollections>
                     </items>
                 </ChoiceBox>
@@ -218,6 +299,15 @@
                             <String fx:id="eng4" fx:value="Englisch"/>
                             <String fx:id="wi4" fx:value="Wirtschaft"/>
                             <String fx:id="bwl4" fx:value="BWL"/>
+                            <String fx:id="9rel" fx:value="Religion"/>
+                            <String fx:id="9iv2" fx:value="IV2"/>
+                            <String fx:id="9ebfbw" fx:value="EBF-BW"/>
+                            <String fx:id="9IV1" fx:value="IV1"/>
+                            <String fx:id="9Gw" fx:value="Gesamtwirtschaft"/>
+                            <String fx:id="9ebfe" fx:value="EBF-E"/>
+                            <String fx:id="9bw2" fx:value="BW2"/>
+                            <String fx:id="9bw1" fx:value="BW1"/>
+                            <String fx:id="9sk" fx:value="Steuerung und Kontrolle"/>
                         </FXCollections>
                     </items>
                 </ChoiceBox>
@@ -232,6 +322,15 @@
                             <String fx:id="eng5" fx:value="Englisch"/>
                             <String fx:id="wi5" fx:value="Wirtschaft"/>
                             <String fx:id="bwl5" fx:value="BWL"/>
+                            <String fx:id="0rel" fx:value="Religion"/>
+                            <String fx:id="0iv2" fx:value="IV2"/>
+                            <String fx:id="0ebfbw" fx:value="EBF-BW"/>
+                            <String fx:id="0IV1" fx:value="IV1"/>
+                            <String fx:id="0Gw" fx:value="Gesamtwirtschaft"/>
+                            <String fx:id="0ebfe" fx:value="EBF-E"/>
+                            <String fx:id="0bw2" fx:value="BW2"/>
+                            <String fx:id="0bw1" fx:value="BW1"/>
+                            <String fx:id="0sk" fx:value="Steuerung und Kontrolle"/>
                         </FXCollections>
                     </items>
                 </ChoiceBox>
@@ -246,6 +345,15 @@
                             <String fx:id="eng6" fx:value="Englisch"/>
                             <String fx:id="wi6" fx:value="Wirtschaft"/>
                             <String fx:id="bwl6" fx:value="BWL"/>
+                            <String fx:id="rel8" fx:value="Religion"/>
+                            <String fx:id="iv28" fx:value="IV2"/>
+                            <String fx:id="ebf8bw8" fx:value="EBF-BW"/>
+                            <String fx:id="IV18" fx:value="IV1"/>
+                            <String fx:id="Gw8" fx:value="Gesamtwirtschaft"/>
+                            <String fx:id="ebfe8" fx:value="EBF-E"/>
+                            <String fx:id="bw28" fx:value="BW2"/>
+                            <String fx:id="bw18" fx:value="BW1"/>
+                            <String fx:id="sk8" fx:value="Steuerung und Kontrolle"/>
                         </FXCollections>
                     </items>
                 </ChoiceBox>
@@ -260,6 +368,15 @@
                             <String fx:id="eng7" fx:value="Englisch"/>
                             <String fx:id="wi7" fx:value="Wirtschaft"/>
                             <String fx:id="bwl7" fx:value="BWL"/>
+                            <String fx:id="rel6" fx:value="Religion"/>
+                            <String fx:id="iv26" fx:value="IV2"/>
+                            <String fx:id="ebfbw6" fx:value="EBF-BW"/>
+                            <String fx:id="IV16" fx:value="IV1"/>
+                            <String fx:id="Gw6" fx:value="Gesamtwirtschaft"/>
+                            <String fx:id="ebfe6" fx:value="EBF-E"/>
+                            <String fx:id="bw26" fx:value="BW2"/>
+                            <String fx:id="bw16" fx:value="BW1"/>
+                            <String fx:id="sk5" fx:value="Steuerung und Kontrolle"/>
                         </FXCollections>
                     </items>
                 </ChoiceBox>
@@ -274,6 +391,15 @@
                             <String fx:id="eng8" fx:value="Englisch"/>
                             <String fx:id="wi8" fx:value="Wirtschaft"/>
                             <String fx:id="bwl8" fx:value="BWL"/>
+                            <String fx:id="rel3" fx:value="Religion"/>
+                            <String fx:id="iv23" fx:value="IV2"/>
+                            <String fx:id="ebfbw3" fx:value="EBF-BW"/>
+                            <String fx:id="IV13" fx:value="IV1"/>
+                            <String fx:id="Gw3" fx:value="Gesamtwirtschaft"/>
+                            <String fx:id="ebfe3" fx:value="EBF-E"/>
+                            <String fx:id="bw23" fx:value="BW2"/>
+                            <String fx:id="bw13" fx:value="BW1"/>
+                            <String fx:id="sk3" fx:value="Steuerung und Kontrolle"/>
                         </FXCollections>
                     </items>
                 </ChoiceBox>

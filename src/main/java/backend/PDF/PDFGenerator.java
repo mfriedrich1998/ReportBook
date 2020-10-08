@@ -86,9 +86,9 @@ public class PDFGenerator {
             Map<String, Object> params = new HashMap<String, Object>();
             params.put("RB_NUMBER", rbNumber + " " + number);
             params.put("DEPARTMENT", department);
-            params.put("DEPARTMENT_NAME", instance.getName());
+            params.put("DEPARTMENT_NAME", instance.getDepartment());
             params.put("TRAINEES_NAME", name);
-            params.put("NAME", instance.getDepartment());
+            params.put("NAME", instance.getName());
             params.put("SIGNATURE_TRAINEE", traineeSignature);
             params.put("SIGNATURE_MENTOR", mentorSignature);
             params.put("SCHOOL_SUBJECTS", schoolSubjects);
